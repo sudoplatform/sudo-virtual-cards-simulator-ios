@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SimulatorMerchant Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/SimulatorMerchant" class="dashAnchor"></a>
+
+    <a title="SimulatorMerchant Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          SudoVirtualCardsSimulator 1.1.0 Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">SudoVirtualCardsSimulator Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      SimulatorMerchant Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DefaultSudoVirtualCardsSimulatorClient.html">DefaultSudoVirtualCardsSimulatorClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SudoVirtualCardsSimulatorError.html">SudoVirtualCardsSimulatorError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SudoVirtualCardsSimulatorClient.html">SudoVirtualCardsSimulatorClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationInput.html">SimulateAuthorizationInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationResponse.html">SimulateAuthorizationResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateDebitInput.html">SimulateDebitInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateDebitResponse.html">SimulateDebitResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateIncrementalAuthorizationInput.html">SimulateIncrementalAuthorizationInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateRefundInput.html">SimulateRefundInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateRefundResponse.html">SimulateRefundResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateReversalInput.html">SimulateReversalInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateReversalResponse.html">SimulateReversalResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulatorMerchant.html">SimulatorMerchant</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SudoVirtualCardsSimulatorConfig.html">SudoVirtualCardsSimulatorConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>SimulatorMerchant</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SimulatorMerchant</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Representation of a simulated merchant</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Properties"></a>
+                  <h3 class="section-name"><p>Properties</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV2idSSvp"></a>
+                    <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV2idSSvp">id</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ID of the merchant for use in simulated transaction requests.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of merchant - used as tranaction descriptions.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV3mccSSvp"></a>
+                    <a name="//apple_ref/swift/Property/mcc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV3mccSSvp">mcc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Merchant category code of merchant.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">mcc</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV4citySSvp"></a>
+                    <a name="//apple_ref/swift/Property/city" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV4citySSvp">city</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>City of merchant.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV5stateSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV5stateSSSgvp">state</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>State of merchant.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV10postalCodeSSvp"></a>
+                    <a name="//apple_ref/swift/Property/postalCode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV10postalCodeSSvp">postalCode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Postal code of merchant.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">postalCode</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV7countrySSvp"></a>
+                    <a name="//apple_ref/swift/Property/country" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV7countrySSvp">country</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Country of merchant.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV8currencySSvp"></a>
+                    <a name="//apple_ref/swift/Property/currency" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV8currencySSvp">currency</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Currency ISO code charged by merchant.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">currency</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV25declineAfterAuthorizationSbvp"></a>
+                    <a name="//apple_ref/swift/Property/declineAfterAuthorization" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV25declineAfterAuthorizationSbvp">declineAfterAuthorization</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Depicts that a transaction request made to this merchant will be authorized at the virtual cards service level, and then immediately declined once it
+reaches the &lsquo;provider level.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">declineAfterAuthorization</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV26declineBeforeAuthorizationSbvp"></a>
+                    <a name="//apple_ref/swift/Property/declineBeforeAuthorization" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV26declineBeforeAuthorizationSbvp">declineBeforeAuthorization</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Depicts that a transaction request made to this merchant will be automatically declined before it reaches the authorization level at the Virtual Card
+Service.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">declineBeforeAuthorization</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV9createdAt10Foundation4DateVvp"></a>
+                    <a name="//apple_ref/swift/Property/createdAt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV9createdAt10Foundation4DateVvp">createdAt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date/timestamp that this resource was created.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">createdAt</span><span class="p">:</span> <span class="kt">Date</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV9updatedAt10Foundation4DateVvp"></a>
+                    <a name="//apple_ref/swift/Property/updatedAt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV9updatedAt10Foundation4DateVvp">updatedAt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date/timestamp that this resource was last updated.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">updatedAt</span><span class="p">:</span> <span class="kt">Date</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Lifecycle"></a>
+                <a name="//apple_ref/swift/Section/Lifecycle" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Lifecycle"></a>
+                  <h3 class="section-name"><p>Lifecycle</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0D8MerchantV2id4name3mcc4city5state10postalCode7country8currency25declineAfterAuthorization0o6BeforeQ09createdAt07updatedT0ACSS_S4SSgS3SS2b10Foundation4DateVAStcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(id:name:mcc:city:state:postalCode:country:currency:declineAfterAuthorization:declineBeforeAuthorization:createdAt:updatedAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0D8MerchantV2id4name3mcc4city5state10postalCode7country8currency25declineAfterAuthorization0o6BeforeQ09createdAt07updatedT0ACSS_S4SSgS3SS2b10Foundation4DateVAStcfc">init(id:<wbr>name:<wbr>mcc:<wbr>city:<wbr>state:<wbr>postalCode:<wbr>country:<wbr>currency:<wbr>declineAfterAuthorization:<wbr>declineBeforeAuthorization:<wbr>createdAt:<wbr>updatedAt:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize an instance of <code>SimulatorMerchant</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+    <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">mcc</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
+    <span class="nv">postalCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">currency</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="nv">declineAfterAuthorization</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span>
+    <span class="nv">declineBeforeAuthorization</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span>
+    <span class="nv">createdAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span>
+    <span class="nv">updatedAt</span><span class="p">:</span> <span class="kt">Date</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-04-30)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
