@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		76390520C16C4C7B7FFE0367 /* Pods_SudoVirtualCardsSimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB61F2D5D144767CB3F18DE /* Pods_SudoVirtualCardsSimulatorTests.framework */; };
 		7CDF2D66B35859241C511E9E /* Pods_SudoVirtualCardsSimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5224AB1F9D044FAF6D5186E8 /* Pods_SudoVirtualCardsSimulator.framework */; };
+		84309D712468BFE400F48ECC /* Expiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D702468BFE400F48ECC /* Expiry.swift */; };
+		84309D732468C03200F48ECC /* BillingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D722468C03200F48ECC /* BillingAddress.swift */; };
+		84309D752468C0E800F48ECC /* AWSRegionType+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D742468C0E800F48ECC /* AWSRegionType+Decodable.swift */; };
+		84309D772468C16D00F48ECC /* CurrencyAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D762468C16D00F48ECC /* CurrencyAmount.swift */; };
+		84309D7B2469015000F48ECC /* CognitoUserPoolIdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D7A2469015000F48ECC /* CognitoUserPoolIdentityProvider.swift */; };
+		84309D822469211100F48ECC /* UserPoolsSignInOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D812469211100F48ECC /* UserPoolsSignInOperation.swift */; };
+		84309D842469211E00F48ECC /* UserPoolsGetTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D832469211E00F48ECC /* UserPoolsGetTokenOperation.swift */; };
+		84309D86246931EF00F48ECC /* AWSRegionType+Stringable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D85246931EF00F48ECC /* AWSRegionType+Stringable.swift */; };
+		84309D8A2469353E00F48ECC /* UserPoolsGetTokenOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D892469353E00F48ECC /* UserPoolsGetTokenOperationTests.swift */; };
+		84309D8C2469354B00F48ECC /* UserPoolsSignInOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D8B2469354B00F48ECC /* UserPoolsSignInOperationTests.swift */; };
+		84309D8E2469355900F48ECC /* CognitoUserPoolIdentityProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D8D2469355900F48ECC /* CognitoUserPoolIdentityProviderTests.swift */; };
+		84309D90246935B400F48ECC /* MockUserPoolAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D8F246935B400F48ECC /* MockUserPoolAuthenticator.swift */; };
+		84309D922469361F00F48ECC /* AuthenticatorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D912469361F00F48ECC /* AuthenticatorClient.swift */; };
+		84309D9424695BAA00F48ECC /* SudoConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D9324695BAA00F48ECC /* SudoConfigFile.swift */; };
 		8468196F23F4C6320043C310 /* OperationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468196823F4C6320043C310 /* OperationFactory.swift */; };
 		8468197023F4C6320043C310 /* GraphQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468196923F4C6320043C310 /* GraphQLAPI.swift */; };
 		8468197123F4C6320043C310 /* SudoLogging+VirtualCardsSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468196B23F4C6320043C310 /* SudoLogging+VirtualCardsSimulator.swift */; };
@@ -22,7 +36,7 @@
 		846A0C4523F24C840085304B /* SSMParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A0C4423F24C840085304B /* SSMParameters.swift */; };
 		846A0C4723F24D130085304B /* TestKeyAuthenticationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A0C4623F24D130085304B /* TestKeyAuthenticationInfo.swift */; };
 		846A0C4923F24D2E0085304B /* TestKeyAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A0C4823F24D2E0085304B /* TestKeyAuthenticationProvider.swift */; };
-		8492C98423F62EB500DF0F95 /* APIErrorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C98323F62EB500DF0F95 /* APIErrorsTests.swift */; };
+		8492C98423F62EB500DF0F95 /* SudoVirtualCardsSimulatorErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C98323F62EB500DF0F95 /* SudoVirtualCardsSimulatorErrorTests.swift */; };
 		8492C98C23F6324F00DF0F95 /* SudoLogging+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C98B23F6324F00DF0F95 /* SudoLogging+Tests.swift */; };
 		8492C99023F6379700DF0F95 /* MockAWSNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C98F23F6379700DF0F95 /* MockAWSNetworkTransport.swift */; };
 		8492C99223F6381500DF0F95 /* XCTTestCase+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C99123F6381500DF0F95 /* XCTTestCase+Utility.swift */; };
@@ -38,7 +52,7 @@
 		8492C9A823F6583200DF0F95 /* GetSimulatorMerchantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C9A723F6583200DF0F95 /* GetSimulatorMerchantsTests.swift */; };
 		8492C9AA23F65C1700DF0F95 /* GetSimulatorConversionRatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C9A923F65C1700DF0F95 /* GetSimulatorConversionRatesTests.swift */; };
 		8492C9AC23F65F3F00DF0F95 /* SudoVirtualCardsSimulatorConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C9AB23F65F3F00DF0F95 /* SudoVirtualCardsSimulatorConfigTests.swift */; };
-		849BA5EF23F2228E002815D8 /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA5EE23F2228E002815D8 /* APIErrors.swift */; };
+		849BA5EF23F2228E002815D8 /* SudoVirtualCardsSimulatorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA5EE23F2228E002815D8 /* SudoVirtualCardsSimulatorError.swift */; };
 		849BA5FC23F22919002815D8 /* SudoVirtualCardsSimulatorIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA5FB23F22919002815D8 /* SudoVirtualCardsSimulatorIntegrationTests.swift */; };
 		849BA5FE23F22919002815D8 /* SudoVirtualCardsSimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B74C4E23F10D21001BEF7C /* SudoVirtualCardsSimulator.framework */; };
 		849BA60B23F2293C002815D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA60A23F2293C002815D8 /* AppDelegate.swift */; };
@@ -100,6 +114,20 @@
 		5224AB1F9D044FAF6D5186E8 /* Pods_SudoVirtualCardsSimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoVirtualCardsSimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB61F2D5D144767CB3F18DE /* Pods_SudoVirtualCardsSimulatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoVirtualCardsSimulatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7196DDF9128B12D9BF387CEB /* Pods-SudoVirtualCardsSimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoVirtualCardsSimulator.release.xcconfig"; path = "Target Support Files/Pods-SudoVirtualCardsSimulator/Pods-SudoVirtualCardsSimulator.release.xcconfig"; sourceTree = "<group>"; };
+		84309D702468BFE400F48ECC /* Expiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expiry.swift; sourceTree = "<group>"; };
+		84309D722468C03200F48ECC /* BillingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingAddress.swift; sourceTree = "<group>"; };
+		84309D742468C0E800F48ECC /* AWSRegionType+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AWSRegionType+Decodable.swift"; sourceTree = "<group>"; };
+		84309D762468C16D00F48ECC /* CurrencyAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAmount.swift; sourceTree = "<group>"; };
+		84309D7A2469015000F48ECC /* CognitoUserPoolIdentityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoUserPoolIdentityProvider.swift; sourceTree = "<group>"; };
+		84309D812469211100F48ECC /* UserPoolsSignInOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoolsSignInOperation.swift; sourceTree = "<group>"; };
+		84309D832469211E00F48ECC /* UserPoolsGetTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoolsGetTokenOperation.swift; sourceTree = "<group>"; };
+		84309D85246931EF00F48ECC /* AWSRegionType+Stringable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AWSRegionType+Stringable.swift"; sourceTree = "<group>"; };
+		84309D892469353E00F48ECC /* UserPoolsGetTokenOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoolsGetTokenOperationTests.swift; sourceTree = "<group>"; };
+		84309D8B2469354B00F48ECC /* UserPoolsSignInOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPoolsSignInOperationTests.swift; sourceTree = "<group>"; };
+		84309D8D2469355900F48ECC /* CognitoUserPoolIdentityProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoUserPoolIdentityProviderTests.swift; sourceTree = "<group>"; };
+		84309D8F246935B400F48ECC /* MockUserPoolAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserPoolAuthenticator.swift; sourceTree = "<group>"; };
+		84309D912469361F00F48ECC /* AuthenticatorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorClient.swift; sourceTree = "<group>"; };
+		84309D9324695BAA00F48ECC /* SudoConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoConfigFile.swift; sourceTree = "<group>"; };
 		8468196823F4C6320043C310 /* OperationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationFactory.swift; sourceTree = "<group>"; };
 		8468196923F4C6320043C310 /* GraphQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLAPI.swift; sourceTree = "<group>"; };
 		8468196B23F4C6320043C310 /* SudoLogging+VirtualCardsSimulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SudoLogging+VirtualCardsSimulator.swift"; sourceTree = "<group>"; };
@@ -113,7 +141,7 @@
 		846A0C4423F24C840085304B /* SSMParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSMParameters.swift; sourceTree = "<group>"; };
 		846A0C4623F24D130085304B /* TestKeyAuthenticationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestKeyAuthenticationInfo.swift; sourceTree = "<group>"; };
 		846A0C4823F24D2E0085304B /* TestKeyAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestKeyAuthenticationProvider.swift; sourceTree = "<group>"; };
-		8492C98323F62EB500DF0F95 /* APIErrorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorsTests.swift; sourceTree = "<group>"; };
+		8492C98323F62EB500DF0F95 /* SudoVirtualCardsSimulatorErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoVirtualCardsSimulatorErrorTests.swift; sourceTree = "<group>"; };
 		8492C98B23F6324F00DF0F95 /* SudoLogging+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SudoLogging+Tests.swift"; sourceTree = "<group>"; };
 		8492C98F23F6379700DF0F95 /* MockAWSNetworkTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAWSNetworkTransport.swift; sourceTree = "<group>"; };
 		8492C99123F6381500DF0F95 /* XCTTestCase+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTTestCase+Utility.swift"; sourceTree = "<group>"; };
@@ -129,7 +157,7 @@
 		8492C9A723F6583200DF0F95 /* GetSimulatorMerchantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSimulatorMerchantsTests.swift; sourceTree = "<group>"; };
 		8492C9A923F65C1700DF0F95 /* GetSimulatorConversionRatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSimulatorConversionRatesTests.swift; sourceTree = "<group>"; };
 		8492C9AB23F65F3F00DF0F95 /* SudoVirtualCardsSimulatorConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoVirtualCardsSimulatorConfigTests.swift; sourceTree = "<group>"; };
-		849BA5EE23F2228E002815D8 /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
+		849BA5EE23F2228E002815D8 /* SudoVirtualCardsSimulatorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoVirtualCardsSimulatorError.swift; sourceTree = "<group>"; };
 		849BA5F923F22919002815D8 /* SudoVirtualCardsSimulatorIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudoVirtualCardsSimulatorIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		849BA5FB23F22919002815D8 /* SudoVirtualCardsSimulatorIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoVirtualCardsSimulatorIntegrationTests.swift; sourceTree = "<group>"; };
 		849BA5FD23F22919002815D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,12 +245,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84309D7D246920BC00F48ECC /* Cognito */ = {
+			isa = PBXGroup;
+			children = (
+				84309D7E246920D000F48ECC /* Operations */,
+				84309D7A2469015000F48ECC /* CognitoUserPoolIdentityProvider.swift */,
+				84309D912469361F00F48ECC /* AuthenticatorClient.swift */,
+			);
+			path = Cognito;
+			sourceTree = "<group>";
+		};
+		84309D7E246920D000F48ECC /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				84309D832469211E00F48ECC /* UserPoolsGetTokenOperation.swift */,
+				84309D812469211100F48ECC /* UserPoolsSignInOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		84309D872469351100F48ECC /* Cognito */ = {
+			isa = PBXGroup;
+			children = (
+				84309D882469351700F48ECC /* Operations */,
+				84309D8D2469355900F48ECC /* CognitoUserPoolIdentityProviderTests.swift */,
+			);
+			path = Cognito;
+			sourceTree = "<group>";
+		};
+		84309D882469351700F48ECC /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				84309D892469353E00F48ECC /* UserPoolsGetTokenOperationTests.swift */,
+				84309D8B2469354B00F48ECC /* UserPoolsSignInOperationTests.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		8468196723F4C6320043C310 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				84309D7D246920BC00F48ECC /* Cognito */,
 				8468196A23F4C6320043C310 /* Extensions */,
 				8468196823F4C6320043C310 /* OperationFactory.swift */,
 				8468196923F4C6320043C310 /* GraphQLAPI.swift */,
+				84309D9324695BAA00F48ECC /* SudoConfigFile.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -232,6 +299,8 @@
 			children = (
 				8468196B23F4C6320043C310 /* SudoLogging+VirtualCardsSimulator.swift */,
 				8468196C23F4C6320043C310 /* Date+MillisecondsSinceEpoch.swift */,
+				84309D742468C0E800F48ECC /* AWSRegionType+Decodable.swift */,
+				84309D85246931EF00F48ECC /* AWSRegionType+Stringable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +310,7 @@
 			children = (
 				8492C98F23F6379700DF0F95 /* MockAWSNetworkTransport.swift */,
 				8492C99323F638CC00DF0F95 /* MockOperationFactory.swift */,
+				84309D8F246935B400F48ECC /* MockUserPoolAuthenticator.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -391,7 +461,7 @@
 				84B74C7123F12189001BEF7C /* Types */,
 				84B74C6D23F116AC001BEF7C /* SudoVirtualCardsSimulatorClient.swift */,
 				84B74C6F23F116D5001BEF7C /* DefaultSudoVirtualCardsSimulatorClient.swift */,
-				849BA5EE23F2228E002815D8 /* APIErrors.swift */,
+				849BA5EE23F2228E002815D8 /* SudoVirtualCardsSimulatorError.swift */,
 				849BA61E23F22B9D002815D8 /* SudoVirtualCardsSimulatorConfig.swift */,
 			);
 			path = Public;
@@ -403,6 +473,9 @@
 				84B74C7223F12192001BEF7C /* Inputs */,
 				84B74C8523F12850001BEF7C /* Responses */,
 				84B74C8C23F129DD001BEF7C /* SimulatorMerchant.swift */,
+				84309D702468BFE400F48ECC /* Expiry.swift */,
+				84309D722468C03200F48ECC /* BillingAddress.swift */,
+				84309D762468C16D00F48ECC /* CurrencyAmount.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -451,7 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				8492C99A23F64D9300DF0F95 /* DefaultSudoVirtualCardsSimulator */,
-				8492C98323F62EB500DF0F95 /* APIErrorsTests.swift */,
+				8492C98323F62EB500DF0F95 /* SudoVirtualCardsSimulatorErrorTests.swift */,
 				8492C9AB23F65F3F00DF0F95 /* SudoVirtualCardsSimulatorConfigTests.swift */,
 			);
 			path = Public;
@@ -460,6 +533,7 @@
 		84E92FF823F3B66900B328E7 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				84309D872469351100F48ECC /* Cognito */,
 				84E92FF923F3B74400B328E7 /* Extensions */,
 			);
 			path = Internal;
@@ -797,7 +871,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -f identity-system-test-config/sudoplatformconfig.json \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nls ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -f identity-system-test-config/sudoplatformconfig.json \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\ncp -f identity-system-test-config/usernamepassword.json \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nls ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\n";
 		};
 		9F2C2C230C55144E8AC54E3E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -855,23 +929,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B74C8223F12747001BEF7C /* SimulateRefundInput.swift in Sources */,
+				84309D9424695BAA00F48ECC /* SudoConfigFile.swift in Sources */,
 				84B74C8723F12870001BEF7C /* SimulateReversalResponse.swift in Sources */,
 				84B74C7423F121A5001BEF7C /* SimulateAuthorizationInput.swift in Sources */,
 				84B74C8D23F129DD001BEF7C /* SimulatorMerchant.swift in Sources */,
+				84309D752468C0E800F48ECC /* AWSRegionType+Decodable.swift in Sources */,
 				8468197023F4C6320043C310 /* GraphQLAPI.swift in Sources */,
 				8468197123F4C6320043C310 /* SudoLogging+VirtualCardsSimulator.swift in Sources */,
+				84309D732468C03200F48ECC /* BillingAddress.swift in Sources */,
+				84309D86246931EF00F48ECC /* AWSRegionType+Stringable.swift in Sources */,
+				84309D772468C16D00F48ECC /* CurrencyAmount.swift in Sources */,
 				849BA61F23F22B9D002815D8 /* SudoVirtualCardsSimulatorConfig.swift in Sources */,
 				84B74C7A23F123AA001BEF7C /* SimulateAuthorizationResponse.swift in Sources */,
 				8468197223F4C6320043C310 /* Date+MillisecondsSinceEpoch.swift in Sources */,
+				84309D922469361F00F48ECC /* AuthenticatorClient.swift in Sources */,
 				84B74C8923F128BE001BEF7C /* SimulateRefundResponse.swift in Sources */,
 				84B74C7023F116D5001BEF7C /* DefaultSudoVirtualCardsSimulatorClient.swift in Sources */,
 				84B74C8B23F1292A001BEF7C /* SimulateDebitResponse.swift in Sources */,
 				84B74C6E23F116AC001BEF7C /* SudoVirtualCardsSimulatorClient.swift in Sources */,
 				84B74C8423F1279E001BEF7C /* SimulateDebitInput.swift in Sources */,
+				84309D842469211E00F48ECC /* UserPoolsGetTokenOperation.swift in Sources */,
 				84B74C7E23F1260E001BEF7C /* SimulateIncrementalAuthorizationInput.swift in Sources */,
 				84B74C8023F126E2001BEF7C /* SimulateReversalInput.swift in Sources */,
+				84309D822469211100F48ECC /* UserPoolsSignInOperation.swift in Sources */,
+				84309D7B2469015000F48ECC /* CognitoUserPoolIdentityProvider.swift in Sources */,
 				8468196F23F4C6320043C310 /* OperationFactory.swift in Sources */,
-				849BA5EF23F2228E002815D8 /* APIErrors.swift in Sources */,
+				849BA5EF23F2228E002815D8 /* SudoVirtualCardsSimulatorError.swift in Sources */,
+				84309D712468BFE400F48ECC /* Expiry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,15 +965,19 @@
 			files = (
 				8492C99E23F64DCE00DF0F95 /* BaseDefaultSudoVirtualCardsSimulatorTests.swift in Sources */,
 				8492C99023F6379700DF0F95 /* MockAWSNetworkTransport.swift in Sources */,
-				8492C98423F62EB500DF0F95 /* APIErrorsTests.swift in Sources */,
+				8492C98423F62EB500DF0F95 /* SudoVirtualCardsSimulatorErrorTests.swift in Sources */,
 				8492C9A423F6577F00DF0F95 /* SimulateRefundWithInputTests.swift in Sources */,
 				8492C99723F6452800DF0F95 /* AnyError.swift in Sources */,
 				8492C9A823F6583200DF0F95 /* GetSimulatorMerchantsTests.swift in Sources */,
+				84309D8C2469354B00F48ECC /* UserPoolsSignInOperationTests.swift in Sources */,
+				84309D90246935B400F48ECC /* MockUserPoolAuthenticator.swift in Sources */,
 				8492C99423F638CC00DF0F95 /* MockOperationFactory.swift in Sources */,
 				8492C9AA23F65C1700DF0F95 /* GetSimulatorConversionRatesTests.swift in Sources */,
 				8492C9A623F657D200DF0F95 /* SimulateDebitWithInputTests.swift in Sources */,
 				8492C98C23F6324F00DF0F95 /* SudoLogging+Tests.swift in Sources */,
 				8492C99923F6465400DF0F95 /* Error+Equality.swift in Sources */,
+				84309D8A2469353E00F48ECC /* UserPoolsGetTokenOperationTests.swift in Sources */,
+				84309D8E2469355900F48ECC /* CognitoUserPoolIdentityProviderTests.swift in Sources */,
 				84E92FFB23F3B77D00B328E7 /* Date+MillisecondsSinceEpochTests.swift in Sources */,
 				8492C9A023F6557B00DF0F95 /* SimulateIncrementalAuthorizationWithInputTests.swift in Sources */,
 				8492C99223F6381500DF0F95 /* XCTTestCase+Utility.swift in Sources */,
@@ -943,7 +1031,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.SudoVirtualCardsSimulatorIntegrationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoVirtualCardsSimulatorIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -964,7 +1052,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.SudoVirtualCardsSimulatorIntegrationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoVirtualCardsSimulatorIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -986,7 +1074,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.TestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.TestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1006,7 +1094,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.TestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.TestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1151,7 +1239,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.SudoVirtualCardsSimulator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.sudovirtualcardssimulator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -1179,7 +1267,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.SudoVirtualCardsSimulator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.sudovirtualcardssimulator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -1200,7 +1288,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.SudoVirtualCardsSimulatorTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoVirtualCardsSimulatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -1220,7 +1308,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anonyome.SudoVirtualCardsSimulatorTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoVirtualCardsSimulatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

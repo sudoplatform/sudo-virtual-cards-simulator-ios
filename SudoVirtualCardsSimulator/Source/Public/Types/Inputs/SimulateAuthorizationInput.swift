@@ -5,7 +5,6 @@
 //
 
 import Foundation
-import SudoVirtualCards
 
 /// Input to simulate an authorization request from a merchant.
 public struct SimulateAuthorizationInput: Equatable {
@@ -22,10 +21,10 @@ public struct SimulateAuthorizationInput: Equatable {
     public var merchantId: String
 
     /// Simulation of card expiry entered by user at merchant checkout.
-    public var expiry: Card.Expiry
+    public var expiry: Expiry
 
     /// Simulation of billing address entered by user at merchant checkout. If absent, will be treated as a `NOT_PROVIDED` on the simulation for AVS check.
-    public var billingAddress: Card.BillingAddress?
+    public var billingAddress: BillingAddress?
 
     /// Simulation of card security code entered by user at merchant checkout. If absent, will be treated as a `NOT_PROVIDED` on the simulation for the CSC
     /// check.
@@ -34,7 +33,7 @@ public struct SimulateAuthorizationInput: Equatable {
     // MARK: - Lifecycle
 
     /// Initialize an instance of `SimulateAuthorizationInput`.
-    public init(pan: String, amount: Int, merchantId: String, expiry: Card.Expiry, billingAddress: Card.BillingAddress?, csc: String?) {
+    public init(pan: String, amount: Int, merchantId: String, expiry: Expiry, billingAddress: BillingAddress?, csc: String?) {
         self.pan = pan
         self.amount = amount
         self.merchantId = merchantId

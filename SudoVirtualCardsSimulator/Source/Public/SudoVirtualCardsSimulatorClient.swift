@@ -5,7 +5,6 @@
 //
 
 import Foundation
-import SudoVirtualCards
 
 /// Generic type associated with API completion/closure handlers. Generic type O is the expected output result in a
 /// success case.

@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          SudoVirtualCardsSimulator 1.1.0 Docs
+          SudoVirtualCardsSimulator 2.0.0 Docs
         </a>
         
       </p>
@@ -61,6 +61,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/AWSRegionType.html">AWSRegionType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -71,6 +79,15 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BillingAddress.html">BillingAddress</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CurrencyAmount.html">CurrencyAmount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Expiry.html">Expiry</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationInput.html">SimulateAuthorizationInput</a>
               </li>
@@ -148,9 +165,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator07DefaultabcD6ClientC6configAcA0abcD6ConfigV_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(config:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator07DefaultabcD6ClientC6configAcA0abcD6ConfigV_tKcfc">init(config:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator07DefaultabcD6ClientC8username8passwordACSSSg_AFtKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(username:password:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator07DefaultabcD6ClientC8username8passwordACSSSg_AFtKcfc">init(username:<wbr>password:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -160,15 +177,41 @@
                       <div class="abstract">
                         <p>Initialize a default Sudo virtual cards simulator instance.</p>
 
-<p>Currently, automatic API configuration is not supported for this service, so you are required to pass in the configuration. It is strongly recommended
-to use an APIKey auth type.</p>
+<p>This initializer will load configuration from the main bundle - please ensure you have a correctly configured configuration in sudoplatformconfig.json.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt"><a href="../Structs/SudoVirtualCardsSimulatorConfig.html">SudoVirtualCardsSimulatorConfig</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator07DefaultabcD6ClientC6config8username8passwordAcA0abcD6ConfigV_SSSgAItKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(config:username:password:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator07DefaultabcD6ClientC6config8username8passwordAcA0abcD6ConfigV_SSSgAItKcfc">init(config:<wbr>username:<wbr>password:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize a default Sudo virtual cards simulator instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt"><a href="../Structs/SudoVirtualCardsSimulatorConfig.html">SudoVirtualCardsSimulatorConfig</a></span><span class="p">,</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -421,9 +464,9 @@ to use an APIKey auth type.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesyyys6ResultOySay0abC014CurrencyAmountVGs5Error_pGcF"></a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesyyys6ResultOySayAA14CurrencyAmountVGs5Error_pGcF"></a>
                     <a name="//apple_ref/swift/Method/getSimulatorConversionRates(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesyyys6ResultOySay0abC014CurrencyAmountVGs5Error_pGcF">getSimulatorConversionRates(_:<wbr>)</a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesyyys6ResultOySayAA14CurrencyAmountVGs5Error_pGcF">getSimulatorConversionRates(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -437,7 +480,7 @@ to use an APIKey auth type.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getSimulatorConversionRates</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt">CurrencyAmount</span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getSimulatorConversionRates</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -452,7 +495,7 @@ to use an APIKey auth type.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-04-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-05-12)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

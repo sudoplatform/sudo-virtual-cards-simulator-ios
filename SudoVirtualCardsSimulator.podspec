@@ -1,7 +1,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                  = 'SudoVirtualCardsSimulator'
-  spec.version               = '1.1.0'
+  spec.version               = '2.0.0'
   spec.author                = { 'Sudo Platform Engineering' => 'sudoplatform-engineering@anonyome.com' }
   spec.homepage              = 'https://sudoplatform.com'
 
@@ -14,8 +14,8 @@ Pod::Spec.new do |spec|
   spec.requires_arc          = true
   spec.swift_version         = '5.0'
 
-  spec.dependency 'SudoVirtualCards'
   spec.dependency 'SudoLogging', '~> 0.2'
+  spec.dependency 'SudoUser', '~> 7.8'
   spec.dependency 'SudoOperations', '~> 1.0'
   spec.dependency 'AWSAppSync', '~> 3.1'
 end

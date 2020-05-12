@@ -5,15 +5,20 @@
 //
 
 import Foundation
-import SudoVirtualCards
 import SudoOperations
 import SudoUser
-import SudoApiClient
 import SudoLogging
 import AWSAppSync
 
 /// Default Client API Endpoint for interacting with the virtual cards service simulator.
 public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorClient {
+
+    // MARK: - Supplementary
+
+    enum Defaults {
+        static let configFileName = "sudoplatformconfig"
+        static let configFileExtension = "json"
+    }
 
     // MARK: - Properties
 
@@ -33,12 +38,48 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
 
     /// Initialize a default Sudo virtual cards simulator instance.
     ///
-    /// Currently, automatic API configuration is not supported for this service, so you are required to pass in the configuration. It is strongly recommended
-    /// to use an APIKey auth type.
+    /// This initializer will load configuration from the main bundle - please ensure you have a correctly configured configuration in sudoplatformconfig.json.
+    public convenience init(username: String?, password: String?) throws {
+        guard let configURL = Bundle.main.url(forResource: Defaults.configFileName, withExtension: Defaults.configFileExtension) else {
+            Logger.virtualCardsSDKLogger.error("Failed to load config")
+            throw SudoVirtualCardsSimulatorError.invalidConfig
+        }
+        let config: SudoVirtualCardsSimulatorConfig
+        do {
+            let fileData = try Data(contentsOf: configURL)
+            let fileConfig = try JSONDecoder().decode(SudoConfigFile.self, from: fileData)
+            config = fileConfig.adminApiService
+        } catch {
+            Logger.virtualCardsSDKLogger.error("Error with config: \(error)")
+            throw SudoVirtualCardsSimulatorError.invalidConfig
+        }
+        try self.init(config: config, username: username, password: password)
+    }
+
+    /// Initialize a default Sudo virtual cards simulator instance.
     ///
     /// - Parameter config: Configuration to establish connection with service.
-    convenience public init(config: SudoVirtualCardsSimulatorConfig) throws {
-        let appSyncConfig = try AWSAppSyncClientConfiguration(appSyncServiceConfig: config)
+    convenience public init(config: SudoVirtualCardsSimulatorConfig, username: String?, password: String?) throws {
+        var userPoolsAuthProvider: SimulatorCognitoUserPoolAuthProvider?
+        if config.authType == .amazonCognitoUserPools {
+            guard
+                let poolId = config.poolId,
+                let clientId = config.clientId,
+                let username = username,
+                let password = password
+            else {
+                throw SudoVirtualCardsSimulatorError.invalidConfig
+            }
+            userPoolsAuthProvider = SimulatorCognitoUserPoolAuthProvider(
+                poolId: poolId,
+                clientId: clientId,
+                region: config.region,
+                username: username,
+                password: password,
+                logger: Logger.virtualCardsSDKLogger
+            )
+        }
+        let appSyncConfig = try AWSAppSyncClientConfiguration(appSyncServiceConfig: config, userPoolsAuthProvider: userPoolsAuthProvider)
         let appSyncClient = try AWSAppSyncClient(appSyncConfig: appSyncConfig)
         self.init(appSyncClient: appSyncClient)
     }
@@ -72,11 +113,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
                                    postalCode: inputAddress.postalCode,
                                    country: inputAddress.country)
         }
-        guard let mm = Int(input.expiry.mm), let yyyy = Int(input.expiry.yyyy) else {
-            logger.error("Expiry values expected Numbers that resolve to ints, instead got \(input.expiry)")
-            return completion(.failure(SudoVirtualCardsSimulatorError.simulateAuthorizationFailed))
-        }
-        let expiry = ExpiryInput(mm: mm, yyyy: yyyy)
+        let expiry = ExpiryInput(mm: input.expiry.mm, yyyy: input.expiry.yyyy)
         var csc: String?? = Optional(nil)
         if let inputCSC = input.csc {
             csc = inputCSC
