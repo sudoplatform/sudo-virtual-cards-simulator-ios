@@ -48,7 +48,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
         do {
             let fileData = try Data(contentsOf: configURL)
             let fileConfig = try JSONDecoder().decode(SudoConfigFile.self, from: fileData)
-            config = fileConfig.adminApiService
+            config = fileConfig.adminConsoleProjectService
         } catch {
             Logger.virtualCardsSDKLogger.error("Error with config: \(error)")
             throw SudoVirtualCardsSimulatorError.invalidConfig
@@ -63,7 +63,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
         var userPoolsAuthProvider: SimulatorCognitoUserPoolAuthProvider?
         if config.authType == .amazonCognitoUserPools {
             guard
-                let poolId = config.poolId,
+                let poolId = config.userPoolId,
                 let clientId = config.clientId,
                 let username = username,
                 let password = password

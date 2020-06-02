@@ -16,7 +16,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
         case endpoint = "apiUrl"
         case region
         case apiKey
-        case poolId
+        case userPoolId
         case clientId
         case clientDatabasePrefix
     }
@@ -26,7 +26,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
     /// User pool identitifer of the user pool being used for authentication.
     ///
      /// Only set this property if using authentication type `.amazonCognitoUserPools`.
-    public var poolId: String?
+    public var userPoolId: String?
 
     /// User pool client identifier of the user pool's client used for authentication.
     ///
@@ -58,7 +58,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
             endpoint: endpoint,
             region: region,
             authType: .apiKey,
-            poolId: nil,
+            userPoolId: nil,
             clientId: nil,
             apiKey: apiKey,
             clientDatabasePrefix: clientDatabasePrefix)
@@ -68,7 +68,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
     public init(
         endpoint: URL,
         region: AWSRegionType,
-        poolId: String,
+        userPoolId: String,
         clientId: String,
         clientDatabasePrefix: String? = nil
     ) {
@@ -76,7 +76,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
             endpoint: endpoint,
             region: region,
             authType: .amazonCognitoUserPools,
-            poolId: poolId,
+            userPoolId: userPoolId,
             clientId: clientId,
             apiKey: nil,
             clientDatabasePrefix: clientDatabasePrefix)
@@ -89,7 +89,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
         endpoint: URL,
         region: AWSRegionType,
         authType: AWSAppSyncAuthType,
-        poolId: String?,
+        userPoolId: String?,
         clientId: String?,
         apiKey: String?,
         clientDatabasePrefix: String?
@@ -97,7 +97,7 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
         self.endpoint = endpoint
         self.region = region
         self.authType = authType
-        self.poolId = poolId
+        self.userPoolId = userPoolId
         self.clientId = clientId
         self.apiKey = apiKey
         self.clientDatabasePrefix = clientDatabasePrefix
@@ -116,19 +116,19 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
             endpoint: endpoint,
             region: region,
             authType: .apiKey,
-            poolId: nil,
+            userPoolId: nil,
             clientId: nil,
             apiKey: apiKey,
             clientDatabasePrefix: clientDatabasePrefix)
         } else if
-            let poolId = try container.decodeIfPresent(String.self, forKey: .poolId),
+            let userPoolId = try container.decodeIfPresent(String.self, forKey: .userPoolId),
             let clientId = try container.decodeIfPresent(String.self, forKey: .clientId)
         {
             self.init(
             endpoint: endpoint,
             region: region,
             authType: .amazonCognitoUserPools,
-            poolId: poolId,
+            userPoolId: userPoolId,
             clientId: clientId,
             apiKey: nil,
             clientDatabasePrefix: clientDatabasePrefix)
@@ -136,11 +136,11 @@ public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, 
             let context = DecodingError.Context(
                 codingPath: [
                     CodingKeys.apiKey,
-                    CodingKeys.poolId,
+                    CodingKeys.userPoolId,
                     CodingKeys.clientId
                 ],
                 debugDescription: "Authentication type not supported. Please include either api key credentials (apiKey) or cognito credentials"
-                    + "(username, password, poolId, clientId)"
+                    + "(username, password, userPoolId, clientId)"
             )
             throw DecodingError.dataCorrupted(context)
         }
