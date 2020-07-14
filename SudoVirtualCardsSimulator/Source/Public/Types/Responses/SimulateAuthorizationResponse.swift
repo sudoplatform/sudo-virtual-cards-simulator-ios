@@ -17,6 +17,9 @@ public struct SimulateAuthorizationResponse: Equatable {
     /// Whether or not authorization is approved.
     public var approved: Bool
 
+    /// Amount billed in card's currency. Only present if approved.
+    public var billedAmount: CurrencyAmount?
+
     /// Decline reason code. Only present if not approved.
     public var declineReason: String?
 
@@ -29,11 +32,12 @@ public struct SimulateAuthorizationResponse: Equatable {
     // MARK: - Lifecycle
 
     /// Initialize an instance of `SimulateAuthorizationResponse`.
-    public init(id: String, approved: Bool, createdAt: Date, updatedAt: Date, declineReason: String? = nil) {
+    public init(id: String, approved: Bool, createdAt: Date, updatedAt: Date, billedAmount: CurrencyAmount? = nil, declineReason: String? = nil) {
         self.id = id
         self.approved = approved
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.billedAmount = billedAmount
         self.declineReason = declineReason
     }
 }

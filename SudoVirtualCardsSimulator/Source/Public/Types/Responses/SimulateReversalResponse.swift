@@ -20,12 +20,16 @@ public struct SimulateReversalResponse: Equatable {
     /// Date/timestamp response was last updated at.
     public var updatedAt: Date
 
+    /// Amount reversed in card's currency.
+    public var billedAmount: CurrencyAmount
+
     // MARK: - Lifecycle
 
     /// Initialize an instance of `SimulateReversalResponse`.
-    public init(id: String, createdAt: Date, updatedAt: Date) {
+    public init(id: String, createdAt: Date, updatedAt: Date, billedAmount: CurrencyAmount) {
         self.id = id
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.billedAmount = billedAmount
     }
 }

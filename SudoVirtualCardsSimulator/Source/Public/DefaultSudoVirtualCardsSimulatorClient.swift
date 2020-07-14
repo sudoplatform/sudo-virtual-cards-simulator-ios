@@ -122,8 +122,8 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             pan: input.pan,
             amount: input.amount,
             merchantId: input.merchantId,
-            billingAddress: billingAddress,
             expiry: expiry,
+            billingAddress: billingAddress,
             csc: csc)
         let mutation = SimulateAuthorizationMutation(input: request)
         let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
@@ -139,11 +139,17 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
+            let billedAmount = result.billedAmount != nil
+                ? CurrencyAmount(
+                    currency: result.billedAmount!.currency,
+                    amount: result.billedAmount!.amount)
+                : nil
             let response = SimulateAuthorizationResponse(
                 id: result.id,
                 approved: result.approved,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
+                billedAmount: billedAmount,
                 declineReason: result.declineReason)
             completion(.success(response))
             return
@@ -174,11 +180,18 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
-            let response = SimulateAuthorizationResponse(id: result.id,
-                                                         approved: result.approved,
-                                                         createdAt: createdAt,
-                                                         updatedAt: updatedAt,
-                                                         declineReason: result.declineReason)
+            let billedAmount = result.billedAmount != nil
+                ? CurrencyAmount(
+                    currency: result.billedAmount!.currency,
+                    amount: result.billedAmount!.amount)
+                : nil
+            let response = SimulateAuthorizationResponse(
+                id: result.id,
+                approved: result.approved,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                billedAmount: billedAmount,
+                declineReason: result.declineReason)
             completion(.success(response))
             return
         })
@@ -202,7 +215,14 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
-            let response = SimulateReversalResponse(id: result.id, createdAt: createdAt, updatedAt: updatedAt)
+            let billedAmount =  CurrencyAmount(
+                currency: result.billedAmount.currency,
+                amount: result.billedAmount.amount)
+            let response = SimulateReversalResponse(
+                id: result.id,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                billedAmount: billedAmount)
             completion(.success(response))
             return
         })
@@ -226,7 +246,14 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
-            let response = SimulateRefundResponse(id: result.id, createdAt: createdAt, updatedAt: updatedAt)
+            let billedAmount = CurrencyAmount(
+                currency: result.billedAmount.currency,
+                amount: result.billedAmount.amount)
+            let response = SimulateRefundResponse(
+                id: result.id,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                billedAmount: billedAmount)
             completion(.success(response))
             return
         })
@@ -250,7 +277,14 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
-            let response = SimulateDebitResponse(id: result.id, createdAt: createdAt, updatedAt: updatedAt)
+            let billedAmount = CurrencyAmount(
+                currency: result.billedAmount.currency,
+                amount: result.billedAmount.amount)
+            let response = SimulateDebitResponse(
+                id: result.id,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                billedAmount: billedAmount)
             completion(.success(response))
             return
         })

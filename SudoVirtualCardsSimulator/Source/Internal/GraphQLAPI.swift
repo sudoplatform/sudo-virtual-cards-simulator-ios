@@ -3,13 +3,15 @@
 
 import AWSAppSync
 
+/// Request to simulate an authorization request from a merchant
 internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
-  internal init(pan: String, amount: Int, merchantId: GraphQLID, billingAddress: Optional<EnteredAddressInput?> = nil, expiry: Optional<ExpiryInput?> = nil, csc: Optional<String?> = nil) {
-    graphQLMap = ["pan": pan, "amount": amount, "merchantId": merchantId, "billingAddress": billingAddress, "expiry": expiry, "csc": csc]
+  internal init(pan: String, amount: Int, merchantId: GraphQLID, expiry: ExpiryInput, billingAddress: Optional<EnteredAddressInput?> = nil, csc: Optional<String?> = nil) {
+    graphQLMap = ["pan": pan, "amount": amount, "merchantId": merchantId, "expiry": expiry, "billingAddress": billingAddress, "csc": csc]
   }
 
+  /// PAN of card presented to merchant
   internal var pan: String {
     get {
       return graphQLMap["pan"] as! String
@@ -19,6 +21,7 @@ internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {
     }
   }
 
+  /// Amount of transaction in merchant's currency
   internal var amount: Int {
     get {
       return graphQLMap["amount"] as! Int
@@ -28,6 +31,7 @@ internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {
     }
   }
 
+  /// ID of merchant to use in simulated authorization
   internal var merchantId: GraphQLID {
     get {
       return graphQLMap["merchantId"] as! GraphQLID
@@ -37,6 +41,18 @@ internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {
     }
   }
 
+  /// Simulation of card expiry entered by user at merchant checkout.
+  internal var expiry: ExpiryInput {
+    get {
+      return graphQLMap["expiry"] as! ExpiryInput
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "expiry")
+    }
+  }
+
+  /// Simulation of billing address entered by user at merchant checkout.
+  /// If absent, will simulate a avs check as NOT_PROVIDED.
   internal var billingAddress: Optional<EnteredAddressInput?> {
     get {
       return graphQLMap["billingAddress"] as! Optional<EnteredAddressInput?>
@@ -46,15 +62,8 @@ internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {
     }
   }
 
-  internal var expiry: Optional<ExpiryInput?> {
-    get {
-      return graphQLMap["expiry"] as! Optional<ExpiryInput?>
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "expiry")
-    }
-  }
-
+  /// Simulation of card security code entered by user at merchant checkout.
+  /// If absent, will simulate a csc check as NOT_PROVIDED.
   internal var csc: Optional<String?> {
     get {
       return graphQLMap["csc"] as! Optional<String?>
@@ -65,6 +74,35 @@ internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {
   }
 }
 
+internal struct ExpiryInput: GraphQLMapConvertible {
+  internal var graphQLMap: GraphQLMap
+
+  internal init(mm: Int, yyyy: Int) {
+    graphQLMap = ["mm": mm, "yyyy": yyyy]
+  }
+
+  internal var mm: Int {
+    get {
+      return graphQLMap["mm"] as! Int
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "mm")
+    }
+  }
+
+  internal var yyyy: Int {
+    get {
+      return graphQLMap["yyyy"] as! Int
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "yyyy")
+    }
+  }
+}
+
+/// Partial address used during simulation. Any unset fields will
+/// default to matching field from the billing address of the
+/// card be used in the simulation.
 internal struct EnteredAddressInput: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
@@ -127,32 +165,7 @@ internal struct EnteredAddressInput: GraphQLMapConvertible {
   }
 }
 
-internal struct ExpiryInput: GraphQLMapConvertible {
-  internal var graphQLMap: GraphQLMap
-
-  internal init(mm: Int, yyyy: Int) {
-    graphQLMap = ["mm": mm, "yyyy": yyyy]
-  }
-
-  internal var mm: Int {
-    get {
-      return graphQLMap["mm"] as! Int
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "mm")
-    }
-  }
-
-  internal var yyyy: Int {
-    get {
-      return graphQLMap["yyyy"] as! Int
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "yyyy")
-    }
-  }
-}
-
+/// Request to simulate an incremental authorization request from a merchant
 internal struct SimulateIncrementalAuthorizationRequest: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
@@ -160,6 +173,7 @@ internal struct SimulateIncrementalAuthorizationRequest: GraphQLMapConvertible {
     graphQLMap = ["amount": amount, "authorizationId": authorizationId]
   }
 
+  /// Amount of transaction in merchant's currency
   internal var amount: Int {
     get {
       return graphQLMap["amount"] as! Int
@@ -169,6 +183,7 @@ internal struct SimulateIncrementalAuthorizationRequest: GraphQLMapConvertible {
     }
   }
 
+  /// ID of previous successful authorization to which this incremental authorization corresponds
   internal var authorizationId: GraphQLID {
     get {
       return graphQLMap["authorizationId"] as! GraphQLID
@@ -179,6 +194,7 @@ internal struct SimulateIncrementalAuthorizationRequest: GraphQLMapConvertible {
   }
 }
 
+/// Request to simulate a reversal request from a merchant
 internal struct SimulateReversalRequest: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
@@ -186,6 +202,7 @@ internal struct SimulateReversalRequest: GraphQLMapConvertible {
     graphQLMap = ["amount": amount, "authorizationId": authorizationId]
   }
 
+  /// Amount of reversal in merchant's currency
   internal var amount: Int {
     get {
       return graphQLMap["amount"] as! Int
@@ -195,6 +212,7 @@ internal struct SimulateReversalRequest: GraphQLMapConvertible {
     }
   }
 
+  /// ID of previous successful authorization to which this reversal corresponds
   internal var authorizationId: GraphQLID {
     get {
       return graphQLMap["authorizationId"] as! GraphQLID
@@ -205,6 +223,26 @@ internal struct SimulateReversalRequest: GraphQLMapConvertible {
   }
 }
 
+/// Request to simulate an authorization expiry event
+internal struct SimulateAuthorizationExpiryRequest: GraphQLMapConvertible {
+  internal var graphQLMap: GraphQLMap
+
+  internal init(authorizationId: GraphQLID) {
+    graphQLMap = ["authorizationId": authorizationId]
+  }
+
+  /// ID of previous successful authorization to which this expiry corresponds
+  internal var authorizationId: GraphQLID {
+    get {
+      return graphQLMap["authorizationId"] as! GraphQLID
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "authorizationId")
+    }
+  }
+}
+
+/// Request to simulate a refund request from a merchant
 internal struct SimulateRefundRequest: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
@@ -212,6 +250,7 @@ internal struct SimulateRefundRequest: GraphQLMapConvertible {
     graphQLMap = ["amount": amount, "debitId": debitId]
   }
 
+  /// Amount of refund in merchant's currency
   internal var amount: Int {
     get {
       return graphQLMap["amount"] as! Int
@@ -221,6 +260,7 @@ internal struct SimulateRefundRequest: GraphQLMapConvertible {
     }
   }
 
+  /// ID of previous successful debit to which this refund corresponds
   internal var debitId: GraphQLID {
     get {
       return graphQLMap["debitId"] as! GraphQLID
@@ -231,6 +271,10 @@ internal struct SimulateRefundRequest: GraphQLMapConvertible {
   }
 }
 
+/// Simulate a settlement of an authorized amount.
+/// Other attributes of the debit such as merchant info are
+/// derived from the original authorization identified by
+/// the authorizationId.
 internal struct SimulateDebitRequest: GraphQLMapConvertible {
   internal var graphQLMap: GraphQLMap
 
@@ -238,6 +282,7 @@ internal struct SimulateDebitRequest: GraphQLMapConvertible {
     graphQLMap = ["amount": amount, "authorizationId": authorizationId]
   }
 
+  /// Amount of transaction in merchant's currency
   internal var amount: Int {
     get {
       return graphQLMap["amount"] as! Int
@@ -247,6 +292,7 @@ internal struct SimulateDebitRequest: GraphQLMapConvertible {
     }
   }
 
+  /// ID of previous successful authorization to which this debit corresponds
   internal var authorizationId: GraphQLID {
     get {
       return graphQLMap["authorizationId"] as! GraphQLID
@@ -259,7 +305,7 @@ internal struct SimulateDebitRequest: GraphQLMapConvertible {
 
 internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
   internal static let operationString =
-    "query ListSimulatorMerchants {\n  listSimulatorMerchants {\n    __typename\n    id\n    name\n    mcc\n    city\n    state\n    postalCode\n    country\n    currency\n    declineAfterAuthorization\n    declineBeforeAuthorization\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+    "query ListSimulatorMerchants {\n  listSimulatorMerchants {\n    __typename\n    id\n    description\n    name\n    mcc\n    city\n    state\n    postalCode\n    country\n    currency\n    declineAfterAuthorization\n    declineBeforeAuthorization\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
 
   internal init() {
   }
@@ -296,6 +342,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
       internal static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("description", type: .nonNull(.scalar(String.self))),
         GraphQLField("name", type: .nonNull(.scalar(String.self))),
         GraphQLField("mcc", type: .nonNull(.scalar(String.self))),
         GraphQLField("city", type: .nonNull(.scalar(String.self))),
@@ -315,8 +362,8 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, name: String, mcc: String, city: String, state: String? = nil, postalCode: String, country: String, currency: String, declineAfterAuthorization: Bool, declineBeforeAuthorization: Bool, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulatorMerchant", "id": id, "name": name, "mcc": mcc, "city": city, "state": state, "postalCode": postalCode, "country": country, "currency": currency, "declineAfterAuthorization": declineAfterAuthorization, "declineBeforeAuthorization": declineBeforeAuthorization, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, description: String, name: String, mcc: String, city: String, state: String? = nil, postalCode: String, country: String, currency: String, declineAfterAuthorization: Bool, declineBeforeAuthorization: Bool, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulatorMerchant", "id": id, "description": description, "name": name, "mcc": mcc, "city": city, "state": state, "postalCode": postalCode, "country": country, "currency": currency, "declineAfterAuthorization": declineAfterAuthorization, "declineBeforeAuthorization": declineBeforeAuthorization, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -328,6 +375,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// ID of the merchant for use in simulated transaction requests
       internal var id: GraphQLID {
         get {
           return snapshot["id"]! as! GraphQLID
@@ -337,6 +385,17 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Description of merchant and its simulated behaviour
+      internal var description: String {
+        get {
+          return snapshot["description"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      /// Name of merchant - used as tranaction descriptions
       internal var name: String {
         get {
           return snapshot["name"]! as! String
@@ -346,6 +405,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Merchant category code of merchant
       internal var mcc: String {
         get {
           return snapshot["mcc"]! as! String
@@ -355,6 +415,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// City of merchant
       internal var city: String {
         get {
           return snapshot["city"]! as! String
@@ -364,6 +425,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// State of merchant
       internal var state: String? {
         get {
           return snapshot["state"] as? String
@@ -373,6 +435,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Postal code of merchant
       internal var postalCode: String {
         get {
           return snapshot["postalCode"]! as! String
@@ -382,6 +445,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Country of merchant
       internal var country: String {
         get {
           return snapshot["country"]! as! String
@@ -391,6 +455,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Currency charged by merchant
       internal var currency: String {
         get {
           return snapshot["currency"]! as! String
@@ -400,6 +465,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Authorization request is made but then automatically reversed
       internal var declineAfterAuthorization: Bool {
         get {
           return snapshot["declineAfterAuthorization"]! as! Bool
@@ -409,6 +475,7 @@ internal final class ListSimulatorMerchantsQuery: GraphQLQuery {
         }
       }
 
+      /// Authorization decision not attempted but reult confrmation issued
       internal var declineBeforeAuthorization: Bool {
         get {
           return snapshot["declineBeforeAuthorization"]! as! Bool
@@ -463,6 +530,12 @@ internal final class ListSimulatorConversionRatesQuery: GraphQLQuery {
       self.init(snapshot: ["__typename": "Query", "listSimulatorConversionRates": listSimulatorConversionRates.map { $0.snapshot }])
     }
 
+    /// [
+    /// { "currency": "USD", "amount": 1000 },
+    /// { "currency": "AUD", "amount": 693 },
+    /// { "currency": "EUR", "amount": 1200 }
+    /// }
+    /// ]
     internal var listSimulatorConversionRates: [ListSimulatorConversionRate] {
       get {
         return (snapshot["listSimulatorConversionRates"] as! [Snapshot]).map { ListSimulatorConversionRate(snapshot: $0) }
@@ -523,7 +596,7 @@ internal final class ListSimulatorConversionRatesQuery: GraphQLQuery {
 
 internal final class SimulateAuthorizationMutation: GraphQLMutation {
   internal static let operationString =
-    "mutation SimulateAuthorization($input: SimulateAuthorizationRequest!) {\n  simulateAuthorization(input: $input) {\n    __typename\n    id\n    approved\n    billed {\n      __typename\n      currency\n      amount\n    }\n    authorizationCode\n    declineReason\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+    "mutation SimulateAuthorization($input: SimulateAuthorizationRequest!) {\n  simulateAuthorization(input: $input) {\n    __typename\n    id\n    approved\n    billedAmount {\n      __typename\n      currency\n      amount\n    }\n    declineReason\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
 
   internal var input: SimulateAuthorizationRequest
 
@@ -568,8 +641,7 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("approved", type: .nonNull(.scalar(Bool.self))),
-        GraphQLField("billed", type: .object(Billed.selections)),
-        GraphQLField("authorizationCode", type: .scalar(String.self)),
+        GraphQLField("billedAmount", type: .object(BilledAmount.selections)),
         GraphQLField("declineReason", type: .scalar(String.self)),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
@@ -581,8 +653,8 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, approved: Bool, billed: Billed? = nil, authorizationCode: String? = nil, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billed": billed.flatMap { $0.snapshot }, "authorizationCode": authorizationCode, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, approved: Bool, billedAmount: BilledAmount? = nil, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billedAmount": billedAmount.flatMap { $0.snapshot }, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -594,6 +666,9 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         }
       }
 
+      /// ID of authorization response. If approved, ID may be
+      /// used in subsequent incremental authorizations, reversals
+      /// and debits
       internal var id: GraphQLID {
         get {
           return snapshot["id"]! as! GraphQLID
@@ -603,6 +678,7 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         }
       }
 
+      /// Whether or not authorization is approved
       internal var approved: Bool {
         get {
           return snapshot["approved"]! as! Bool
@@ -612,24 +688,17 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         }
       }
 
-      internal var billed: Billed? {
+      /// Billed amount in card's currency
+      internal var billedAmount: BilledAmount? {
         get {
-          return (snapshot["billed"] as? Snapshot).flatMap { Billed(snapshot: $0) }
+          return (snapshot["billedAmount"] as? Snapshot).flatMap { BilledAmount(snapshot: $0) }
         }
         set {
-          snapshot.updateValue(newValue?.snapshot, forKey: "billed")
+          snapshot.updateValue(newValue?.snapshot, forKey: "billedAmount")
         }
       }
 
-      internal var authorizationCode: String? {
-        get {
-          return snapshot["authorizationCode"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "authorizationCode")
-        }
-      }
-
+      /// Decline reason code. Only present if not approved.
       internal var declineReason: String? {
         get {
           return snapshot["declineReason"] as? String
@@ -657,7 +726,7 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         }
       }
 
-      internal struct Billed: GraphQLSelectionSet {
+      internal struct BilledAmount: GraphQLSelectionSet {
         internal static let possibleTypes = ["CurrencyAmount"]
 
         internal static let selections: [GraphQLSelection] = [
@@ -709,7 +778,7 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
 
 internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
   internal static let operationString =
-    "mutation SimulateIncrementalAuthorization($input: SimulateIncrementalAuthorizationRequest!) {\n  simulateIncrementalAuthorization(input: $input) {\n    __typename\n    id\n    approved\n    billed {\n      __typename\n      currency\n      amount\n    }\n    authorizationCode\n    declineReason\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+    "mutation SimulateIncrementalAuthorization($input: SimulateIncrementalAuthorizationRequest!) {\n  simulateIncrementalAuthorization(input: $input) {\n    __typename\n    id\n    approved\n    billedAmount {\n      __typename\n      currency\n      amount\n    }\n    declineReason\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
 
   internal var input: SimulateIncrementalAuthorizationRequest
 
@@ -754,8 +823,7 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("approved", type: .nonNull(.scalar(Bool.self))),
-        GraphQLField("billed", type: .object(Billed.selections)),
-        GraphQLField("authorizationCode", type: .scalar(String.self)),
+        GraphQLField("billedAmount", type: .object(BilledAmount.selections)),
         GraphQLField("declineReason", type: .scalar(String.self)),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
@@ -767,8 +835,8 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, approved: Bool, billed: Billed? = nil, authorizationCode: String? = nil, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billed": billed.flatMap { $0.snapshot }, "authorizationCode": authorizationCode, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, approved: Bool, billedAmount: BilledAmount? = nil, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billedAmount": billedAmount.flatMap { $0.snapshot }, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -780,6 +848,9 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         }
       }
 
+      /// ID of authorization response. If approved, ID may be
+      /// used in subsequent incremental authorizations, reversals
+      /// and debits
       internal var id: GraphQLID {
         get {
           return snapshot["id"]! as! GraphQLID
@@ -789,6 +860,7 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         }
       }
 
+      /// Whether or not authorization is approved
       internal var approved: Bool {
         get {
           return snapshot["approved"]! as! Bool
@@ -798,24 +870,17 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         }
       }
 
-      internal var billed: Billed? {
+      /// Billed amount in card's currency
+      internal var billedAmount: BilledAmount? {
         get {
-          return (snapshot["billed"] as? Snapshot).flatMap { Billed(snapshot: $0) }
+          return (snapshot["billedAmount"] as? Snapshot).flatMap { BilledAmount(snapshot: $0) }
         }
         set {
-          snapshot.updateValue(newValue?.snapshot, forKey: "billed")
+          snapshot.updateValue(newValue?.snapshot, forKey: "billedAmount")
         }
       }
 
-      internal var authorizationCode: String? {
-        get {
-          return snapshot["authorizationCode"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "authorizationCode")
-        }
-      }
-
+      /// Decline reason code. Only present if not approved.
       internal var declineReason: String? {
         get {
           return snapshot["declineReason"] as? String
@@ -843,7 +908,7 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         }
       }
 
-      internal struct Billed: GraphQLSelectionSet {
+      internal struct BilledAmount: GraphQLSelectionSet {
         internal static let possibleTypes = ["CurrencyAmount"]
 
         internal static let selections: [GraphQLSelection] = [
@@ -895,7 +960,7 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
 
 internal final class SimulateReversalMutation: GraphQLMutation {
   internal static let operationString =
-    "mutation SimulateReversal($input: SimulateReversalRequest!) {\n  simulateReversal(input: $input) {\n    __typename\n    id\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+    "mutation SimulateReversal($input: SimulateReversalRequest!) {\n  simulateReversal(input: $input) {\n    __typename\n    id\n    billedAmount {\n      __typename\n      currency\n      amount\n    }\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
 
   internal var input: SimulateReversalRequest
 
@@ -939,6 +1004,7 @@ internal final class SimulateReversalMutation: GraphQLMutation {
       internal static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("billedAmount", type: .nonNull(.object(BilledAmount.selections))),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
       ]
@@ -949,8 +1015,8 @@ internal final class SimulateReversalMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateReversalResponse", "id": id, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, billedAmount: BilledAmount, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateReversalResponse", "id": id, "billedAmount": billedAmount.snapshot, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -962,6 +1028,164 @@ internal final class SimulateReversalMutation: GraphQLMutation {
         }
       }
 
+      /// ID of reversal response.
+      internal var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      /// Amount reversed in card's currency
+      internal var billedAmount: BilledAmount {
+        get {
+          return BilledAmount(snapshot: snapshot["billedAmount"]! as! Snapshot)
+        }
+        set {
+          snapshot.updateValue(newValue.snapshot, forKey: "billedAmount")
+        }
+      }
+
+      internal var createdAtEpochMs: Double {
+        get {
+          return snapshot["createdAtEpochMs"]! as! Double
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "createdAtEpochMs")
+        }
+      }
+
+      internal var updatedAtEpochMs: Double {
+        get {
+          return snapshot["updatedAtEpochMs"]! as! Double
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "updatedAtEpochMs")
+        }
+      }
+
+      internal struct BilledAmount: GraphQLSelectionSet {
+        internal static let possibleTypes = ["CurrencyAmount"]
+
+        internal static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("currency", type: .nonNull(.scalar(String.self))),
+          GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
+        ]
+
+        internal var snapshot: Snapshot
+
+        internal init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        internal init(currency: String, amount: Int) {
+          self.init(snapshot: ["__typename": "CurrencyAmount", "currency": currency, "amount": amount])
+        }
+
+        internal var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        internal var currency: String {
+          get {
+            return snapshot["currency"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "currency")
+          }
+        }
+
+        internal var amount: Int {
+          get {
+            return snapshot["amount"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "amount")
+          }
+        }
+      }
+    }
+  }
+}
+
+internal final class SimulateAuthorizationExpiryMutation: GraphQLMutation {
+  internal static let operationString =
+    "mutation SimulateAuthorizationExpiry($input: SimulateAuthorizationExpiryRequest!) {\n  simulateAuthorizationExpiry(input: $input) {\n    __typename\n    id\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+
+  internal var input: SimulateAuthorizationExpiryRequest
+
+  internal init(input: SimulateAuthorizationExpiryRequest) {
+    self.input = input
+  }
+
+  internal var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  internal struct Data: GraphQLSelectionSet {
+    internal static let possibleTypes = ["Mutation"]
+
+    internal static let selections: [GraphQLSelection] = [
+      GraphQLField("simulateAuthorizationExpiry", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.object(SimulateAuthorizationExpiry.selections))),
+    ]
+
+    internal var snapshot: Snapshot
+
+    internal init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    internal init(simulateAuthorizationExpiry: SimulateAuthorizationExpiry) {
+      self.init(snapshot: ["__typename": "Mutation", "simulateAuthorizationExpiry": simulateAuthorizationExpiry.snapshot])
+    }
+
+    internal var simulateAuthorizationExpiry: SimulateAuthorizationExpiry {
+      get {
+        return SimulateAuthorizationExpiry(snapshot: snapshot["simulateAuthorizationExpiry"]! as! Snapshot)
+      }
+      set {
+        snapshot.updateValue(newValue.snapshot, forKey: "simulateAuthorizationExpiry")
+      }
+    }
+
+    internal struct SimulateAuthorizationExpiry: GraphQLSelectionSet {
+      internal static let possibleTypes = ["SimulateAuthorizationExpiryResponse"]
+
+      internal static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
+        GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
+      ]
+
+      internal var snapshot: Snapshot
+
+      internal init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      internal init(id: GraphQLID, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateAuthorizationExpiryResponse", "id": id, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      }
+
+      internal var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// ID of authorization expiry response.
       internal var id: GraphQLID {
         get {
           return snapshot["id"]! as! GraphQLID
@@ -994,7 +1218,7 @@ internal final class SimulateReversalMutation: GraphQLMutation {
 
 internal final class SimulateRefundMutation: GraphQLMutation {
   internal static let operationString =
-    "mutation SimulateRefund($input: SimulateRefundRequest!) {\n  simulateRefund(input: $input) {\n    __typename\n    id\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+    "mutation SimulateRefund($input: SimulateRefundRequest!) {\n  simulateRefund(input: $input) {\n    __typename\n    id\n    billedAmount {\n      __typename\n      currency\n      amount\n    }\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
 
   internal var input: SimulateRefundRequest
 
@@ -1038,6 +1262,7 @@ internal final class SimulateRefundMutation: GraphQLMutation {
       internal static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("billedAmount", type: .nonNull(.object(BilledAmount.selections))),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
       ]
@@ -1048,8 +1273,8 @@ internal final class SimulateRefundMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateRefundResponse", "id": id, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, billedAmount: BilledAmount, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateRefundResponse", "id": id, "billedAmount": billedAmount.snapshot, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -1061,12 +1286,23 @@ internal final class SimulateRefundMutation: GraphQLMutation {
         }
       }
 
+      /// ID of refund response.
       internal var id: GraphQLID {
         get {
           return snapshot["id"]! as! GraphQLID
         }
         set {
           snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      /// Amount refunded in card's currency
+      internal var billedAmount: BilledAmount {
+        get {
+          return BilledAmount(snapshot: snapshot["billedAmount"]! as! Snapshot)
+        }
+        set {
+          snapshot.updateValue(newValue.snapshot, forKey: "billedAmount")
         }
       }
 
@@ -1087,13 +1323,60 @@ internal final class SimulateRefundMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAtEpochMs")
         }
       }
+
+      internal struct BilledAmount: GraphQLSelectionSet {
+        internal static let possibleTypes = ["CurrencyAmount"]
+
+        internal static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("currency", type: .nonNull(.scalar(String.self))),
+          GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
+        ]
+
+        internal var snapshot: Snapshot
+
+        internal init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        internal init(currency: String, amount: Int) {
+          self.init(snapshot: ["__typename": "CurrencyAmount", "currency": currency, "amount": amount])
+        }
+
+        internal var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        internal var currency: String {
+          get {
+            return snapshot["currency"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "currency")
+          }
+        }
+
+        internal var amount: Int {
+          get {
+            return snapshot["amount"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "amount")
+          }
+        }
+      }
     }
   }
 }
 
 internal final class SimulateDebitMutation: GraphQLMutation {
   internal static let operationString =
-    "mutation SimulateDebit($input: SimulateDebitRequest!) {\n  simulateDebit(input: $input) {\n    __typename\n    id\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
+    "mutation SimulateDebit($input: SimulateDebitRequest!) {\n  simulateDebit(input: $input) {\n    __typename\n    id\n    billedAmount {\n      __typename\n      currency\n      amount\n    }\n    createdAtEpochMs\n    updatedAtEpochMs\n  }\n}"
 
   internal var input: SimulateDebitRequest
 
@@ -1137,6 +1420,7 @@ internal final class SimulateDebitMutation: GraphQLMutation {
       internal static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("billedAmount", type: .nonNull(.object(BilledAmount.selections))),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
       ]
@@ -1147,8 +1431,8 @@ internal final class SimulateDebitMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateDebitResponse", "id": id, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, billedAmount: BilledAmount, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateDebitResponse", "id": id, "billedAmount": billedAmount.snapshot, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -1160,12 +1444,23 @@ internal final class SimulateDebitMutation: GraphQLMutation {
         }
       }
 
+      /// ID of debit response.
       internal var id: GraphQLID {
         get {
           return snapshot["id"]! as! GraphQLID
         }
         set {
           snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      /// Amount debited in card's currency
+      internal var billedAmount: BilledAmount {
+        get {
+          return BilledAmount(snapshot: snapshot["billedAmount"]! as! Snapshot)
+        }
+        set {
+          snapshot.updateValue(newValue.snapshot, forKey: "billedAmount")
         }
       }
 
@@ -1184,6 +1479,53 @@ internal final class SimulateDebitMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "updatedAtEpochMs")
+        }
+      }
+
+      internal struct BilledAmount: GraphQLSelectionSet {
+        internal static let possibleTypes = ["CurrencyAmount"]
+
+        internal static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("currency", type: .nonNull(.scalar(String.self))),
+          GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
+        ]
+
+        internal var snapshot: Snapshot
+
+        internal init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        internal init(currency: String, amount: Int) {
+          self.init(snapshot: ["__typename": "CurrencyAmount", "currency": currency, "amount": amount])
+        }
+
+        internal var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        internal var currency: String {
+          get {
+            return snapshot["currency"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "currency")
+          }
+        }
+
+        internal var amount: Int {
+          get {
+            return snapshot["amount"]! as! Int
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "amount")
+          }
         }
       }
     }
