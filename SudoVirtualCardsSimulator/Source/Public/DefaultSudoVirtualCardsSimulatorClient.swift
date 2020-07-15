@@ -139,17 +139,15 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
-            let billedAmount = result.billedAmount != nil
-                ? CurrencyAmount(
-                    currency: result.billedAmount!.currency,
-                    amount: result.billedAmount!.amount)
-                : nil
+            let billedAmount =  CurrencyAmount(
+                    currency: result.billedAmount.currency,
+                    amount: result.billedAmount.amount)
             let response = SimulateAuthorizationResponse(
                 id: result.id,
                 approved: result.approved,
+                billedAmount: billedAmount,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
-                billedAmount: billedAmount,
                 declineReason: result.declineReason)
             completion(.success(response))
             return
@@ -180,17 +178,15 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             }
             let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
             let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
-            let billedAmount = result.billedAmount != nil
-                ? CurrencyAmount(
-                    currency: result.billedAmount!.currency,
-                    amount: result.billedAmount!.amount)
-                : nil
+            let billedAmount = CurrencyAmount(
+                    currency: result.billedAmount.currency,
+                    amount: result.billedAmount.amount)
             let response = SimulateAuthorizationResponse(
                 id: result.id,
                 approved: result.approved,
+                billedAmount: billedAmount,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
-                billedAmount: billedAmount,
                 declineReason: result.declineReason)
             completion(.success(response))
             return
@@ -223,6 +219,37 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
                 createdAt: createdAt,
                 updatedAt: updatedAt,
                 billedAmount: billedAmount)
+            completion(.success(response))
+            return
+        })
+        operation.addObserver(observer)
+        queue.addOperation(operation)
+    }
+
+    public func simulateAuthorizationExpiryWithId(
+        _ id: String,
+        completion: @escaping ClientCompletion<SimulateAuthorizationExpiryResponse>
+    ) {
+        let input = SimulateAuthorizationExpiryRequest(
+            authorizationId: id)
+        let mutation = SimulateAuthorizationExpiryMutation(input: input)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
+            if let error = errors.first {
+                completion(.failure(error))
+                return
+            }
+            guard let result = operation.result?.simulateAuthorizationExpiry else {
+                self?.logger.error("No result returned without error - this is unexpected behavior")
+                completion(.failure(SudoVirtualCardsSimulatorError.simulateAuthorizationExpiryFailed))
+                return
+            }
+            let createdAt = Date(millisecondsSince1970: result.createdAtEpochMs)
+            let updatedAt = Date(millisecondsSince1970: result.updatedAtEpochMs)
+            let response = SimulateAuthorizationExpiryResponse(
+                id: result.id,
+                createdAt: createdAt,
+                updatedAt: updatedAt)
             completion(.success(response))
             return
         })

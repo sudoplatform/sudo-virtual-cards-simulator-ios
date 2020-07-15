@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          SudoVirtualCardsSimulator 3.0.1 Docs
+          SudoVirtualCardsSimulator 3.0.2 Docs
         </a>
         
       </p>
@@ -87,6 +87,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Expiry.html">Expiry</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationExpiryResponse.html">SimulateAuthorizationExpiryResponse</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationInput.html">SimulateAuthorizationInput</a>
@@ -345,6 +348,87 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO17excessiveReversalyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/excessiveReversal" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO17excessiveReversalyA2CmF">excessiveReversal</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attempt to reverse an amount larger than the remaining pending amount of an authorization</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">excessiveReversal</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO15excessiveRefundyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/excessiveRefund" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO15excessiveRefundyA2CmF">excessiveRefund</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attempt to refund an amount larger than the remaining settled amount of a debit</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">excessiveRefund</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO14alreadyExpiredyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/alreadyExpired" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO14alreadyExpiredyA2CmF">alreadyExpired</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attempt to expiry an authorization that is already expired</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">alreadyExpired</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO22InvalidTransactionTypeyA2CmF"></a>
                     <a name="//apple_ref/swift/Element/InvalidTransactionType" class="dashAnchor"></a>
                     <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO22InvalidTransactionTypeyA2CmF">InvalidTransactionType</a>
@@ -444,6 +528,33 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">case</span> <span class="n">simulateReversalFailed</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO33simulateAuthorizationExpiryFailedyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/simulateAuthorizationExpiryFailed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO33simulateAuthorizationExpiryFailedyA2CmF">simulateAuthorizationExpiryFailed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Simulate authorization expiry API call failed generically - this is generally a sign of a programmatic failure or bug within the kit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">simulateAuthorizationExpiryFailed</span></code></pre>
 
                         </div>
                       </div>
@@ -620,7 +731,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-07-14)</p>
+      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-07-15)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

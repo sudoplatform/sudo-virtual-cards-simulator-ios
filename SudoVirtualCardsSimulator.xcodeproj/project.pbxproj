@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1AB6E424BEC6ED00644E28 /* SimulateAuthorizationExpiryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AB6E324BEC6ED00644E28 /* SimulateAuthorizationExpiryResponse.swift */; };
+		5D1AB6E624BEC88A00644E28 /* SimulateAuthorizationExpiryWithInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AB6E524BEC88A00644E28 /* SimulateAuthorizationExpiryWithInputTests.swift */; };
 		76390520C16C4C7B7FFE0367 /* Pods_SudoVirtualCardsSimulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB61F2D5D144767CB3F18DE /* Pods_SudoVirtualCardsSimulatorTests.framework */; };
 		7CDF2D66B35859241C511E9E /* Pods_SudoVirtualCardsSimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5224AB1F9D044FAF6D5186E8 /* Pods_SudoVirtualCardsSimulator.framework */; };
 		84309D712468BFE400F48ECC /* Expiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309D702468BFE400F48ECC /* Expiry.swift */; };
@@ -112,6 +114,8 @@
 		312A344A88B5FB70CCF5B28B /* Pods-SudoVirtualCardsSimulatorIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoVirtualCardsSimulatorIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoVirtualCardsSimulatorIntegrationTests/Pods-SudoVirtualCardsSimulatorIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3DCAD5E7D280EE3B6E815EA8 /* Pods-SudoVirtualCardsSimulatorIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoVirtualCardsSimulatorIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoVirtualCardsSimulatorIntegrationTests/Pods-SudoVirtualCardsSimulatorIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		5224AB1F9D044FAF6D5186E8 /* Pods_SudoVirtualCardsSimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoVirtualCardsSimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1AB6E324BEC6ED00644E28 /* SimulateAuthorizationExpiryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulateAuthorizationExpiryResponse.swift; sourceTree = "<group>"; };
+		5D1AB6E524BEC88A00644E28 /* SimulateAuthorizationExpiryWithInputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulateAuthorizationExpiryWithInputTests.swift; sourceTree = "<group>"; };
 		6DB61F2D5D144767CB3F18DE /* Pods_SudoVirtualCardsSimulatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoVirtualCardsSimulatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7196DDF9128B12D9BF387CEB /* Pods-SudoVirtualCardsSimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoVirtualCardsSimulator.release.xcconfig"; path = "Target Support Files/Pods-SudoVirtualCardsSimulator/Pods-SudoVirtualCardsSimulator.release.xcconfig"; sourceTree = "<group>"; };
 		84309D702468BFE400F48ECC /* Expiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expiry.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				8492C99B23F64DB400DF0F95 /* SimulateAuthorizationWithInputTests.swift */,
 				8492C99F23F6557B00DF0F95 /* SimulateIncrementalAuthorizationWithInputTests.swift */,
 				8492C9A123F6569B00DF0F95 /* SimulateReversalWithInputTests.swift */,
+				5D1AB6E524BEC88A00644E28 /* SimulateAuthorizationExpiryWithInputTests.swift */,
 				8492C9A323F6577F00DF0F95 /* SimulateRefundWithInputTests.swift */,
 				8492C9A523F657D200DF0F95 /* SimulateDebitWithInputTests.swift */,
 				8492C9A723F6583200DF0F95 /* GetSimulatorMerchantsTests.swift */,
@@ -495,6 +500,7 @@
 		84B74C8523F12850001BEF7C /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				5D1AB6E324BEC6ED00644E28 /* SimulateAuthorizationExpiryResponse.swift */,
 				84B74C7923F123AA001BEF7C /* SimulateAuthorizationResponse.swift */,
 				84B74C8623F12870001BEF7C /* SimulateReversalResponse.swift */,
 				84B74C8823F128BE001BEF7C /* SimulateRefundResponse.swift */,
@@ -931,6 +937,7 @@
 				84B74C8223F12747001BEF7C /* SimulateRefundInput.swift in Sources */,
 				84309D9424695BAA00F48ECC /* SudoConfigFile.swift in Sources */,
 				84B74C8723F12870001BEF7C /* SimulateReversalResponse.swift in Sources */,
+				5D1AB6E424BEC6ED00644E28 /* SimulateAuthorizationExpiryResponse.swift in Sources */,
 				84B74C7423F121A5001BEF7C /* SimulateAuthorizationInput.swift in Sources */,
 				84B74C8D23F129DD001BEF7C /* SimulatorMerchant.swift in Sources */,
 				84309D752468C0E800F48ECC /* AWSRegionType+Decodable.swift in Sources */,
@@ -964,6 +971,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8492C99E23F64DCE00DF0F95 /* BaseDefaultSudoVirtualCardsSimulatorTests.swift in Sources */,
+				5D1AB6E624BEC88A00644E28 /* SimulateAuthorizationExpiryWithInputTests.swift in Sources */,
 				8492C99023F6379700DF0F95 /* MockAWSNetworkTransport.swift in Sources */,
 				8492C98423F62EB500DF0F95 /* SudoVirtualCardsSimulatorErrorTests.swift in Sources */,
 				8492C9A423F6577F00DF0F95 /* SimulateRefundWithInputTests.swift in Sources */,

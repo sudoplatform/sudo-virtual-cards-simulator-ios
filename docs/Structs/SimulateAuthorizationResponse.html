@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          SudoVirtualCardsSimulator 3.0.1 Docs
+          SudoVirtualCardsSimulator 3.0.2 Docs
         </a>
         
       </p>
@@ -87,6 +87,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Expiry.html">Expiry</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationExpiryResponse.html">SimulateAuthorizationExpiryResponse</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SimulateAuthorizationInput.html">SimulateAuthorizationInput</a>
@@ -219,9 +222,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV12billedAmountAA08CurrencyI0VSgvp"></a>
+                    <a name="/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV12billedAmountAA08CurrencyI0Vvp"></a>
                     <a name="//apple_ref/swift/Property/billedAmount" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV12billedAmountAA08CurrencyI0VSgvp">billedAmount</a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV12billedAmountAA08CurrencyI0Vvp">billedAmount</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -229,14 +232,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Amount billed in card&rsquo;s currency. Only present if approved.</p>
+                        <p>Amount billed in card&rsquo;s currency.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">billedAmount</span><span class="p">:</span> <span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">billedAmount</span><span class="p">:</span> <span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span></code></pre>
 
                         </div>
                       </div>
@@ -340,9 +343,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV2id8approved9createdAt07updatedK012billedAmount13declineReasonACSS_Sb10Foundation4DateVAlA08CurrencyN0VSgSSSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(id:approved:createdAt:updatedAt:billedAmount:declineReason:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV2id8approved9createdAt07updatedK012billedAmount13declineReasonACSS_Sb10Foundation4DateVAlA08CurrencyN0VSgSSSgtcfc">init(id:<wbr>approved:<wbr>createdAt:<wbr>updatedAt:<wbr>billedAmount:<wbr>declineReason:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV2id8approved12billedAmount9createdAt07updatedM013declineReasonACSS_SbAA08CurrencyK0V10Foundation4DateVANSSSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(id:approved:billedAmount:createdAt:updatedAt:declineReason:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator29SimulateAuthorizationResponseV2id8approved12billedAmount9createdAt07updatedM013declineReasonACSS_SbAA08CurrencyK0V10Foundation4DateVANSSSgtcfc">init(id:<wbr>approved:<wbr>billedAmount:<wbr>createdAt:<wbr>updatedAt:<wbr>declineReason:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -357,7 +360,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">approved</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">createdAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">updatedAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">billedAmount</span><span class="p">:</span> <span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">declineReason</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">approved</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">billedAmount</span><span class="p">:</span> <span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span><span class="p">,</span> <span class="nv">createdAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">updatedAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">declineReason</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -372,7 +375,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-07-14)</p>
+      <p>&copy; 2020 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2020-07-15)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

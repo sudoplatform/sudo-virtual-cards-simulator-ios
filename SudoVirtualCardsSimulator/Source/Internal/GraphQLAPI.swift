@@ -641,7 +641,7 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("approved", type: .nonNull(.scalar(Bool.self))),
-        GraphQLField("billedAmount", type: .object(BilledAmount.selections)),
+        GraphQLField("billedAmount", type: .nonNull(.object(BilledAmount.selections))),
         GraphQLField("declineReason", type: .scalar(String.self)),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
@@ -653,8 +653,8 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, approved: Bool, billedAmount: BilledAmount? = nil, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billedAmount": billedAmount.flatMap { $0.snapshot }, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, approved: Bool, billedAmount: BilledAmount, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billedAmount": billedAmount.snapshot, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -689,12 +689,12 @@ internal final class SimulateAuthorizationMutation: GraphQLMutation {
       }
 
       /// Billed amount in card's currency
-      internal var billedAmount: BilledAmount? {
+      internal var billedAmount: BilledAmount {
         get {
-          return (snapshot["billedAmount"] as? Snapshot).flatMap { BilledAmount(snapshot: $0) }
+          return BilledAmount(snapshot: snapshot["billedAmount"]! as! Snapshot)
         }
         set {
-          snapshot.updateValue(newValue?.snapshot, forKey: "billedAmount")
+          snapshot.updateValue(newValue.snapshot, forKey: "billedAmount")
         }
       }
 
@@ -823,7 +823,7 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("approved", type: .nonNull(.scalar(Bool.self))),
-        GraphQLField("billedAmount", type: .object(BilledAmount.selections)),
+        GraphQLField("billedAmount", type: .nonNull(.object(BilledAmount.selections))),
         GraphQLField("declineReason", type: .scalar(String.self)),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
@@ -835,8 +835,8 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      internal init(id: GraphQLID, approved: Bool, billedAmount: BilledAmount? = nil, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
-        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billedAmount": billedAmount.flatMap { $0.snapshot }, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
+      internal init(id: GraphQLID, approved: Bool, billedAmount: BilledAmount, declineReason: String? = nil, createdAtEpochMs: Double, updatedAtEpochMs: Double) {
+        self.init(snapshot: ["__typename": "SimulateAuthorizationResponse", "id": id, "approved": approved, "billedAmount": billedAmount.snapshot, "declineReason": declineReason, "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs])
       }
 
       internal var __typename: String {
@@ -871,12 +871,12 @@ internal final class SimulateIncrementalAuthorizationMutation: GraphQLMutation {
       }
 
       /// Billed amount in card's currency
-      internal var billedAmount: BilledAmount? {
+      internal var billedAmount: BilledAmount {
         get {
-          return (snapshot["billedAmount"] as? Snapshot).flatMap { BilledAmount(snapshot: $0) }
+          return BilledAmount(snapshot: snapshot["billedAmount"]! as! Snapshot)
         }
         set {
-          snapshot.updateValue(newValue?.snapshot, forKey: "billedAmount")
+          snapshot.updateValue(newValue.snapshot, forKey: "billedAmount")
         }
       }
 

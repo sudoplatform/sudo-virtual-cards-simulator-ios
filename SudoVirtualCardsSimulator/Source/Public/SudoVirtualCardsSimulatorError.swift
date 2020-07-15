@@ -23,6 +23,12 @@ public enum SudoVirtualCardsSimulatorError: Error, Equatable {
     case currencyMismatch
     /// Merchant information supplied did not match a merchant on the service.
     case merchantNotFound
+    /// Attempt to reverse an amount larger than the remaining pending amount of an authorization
+    case excessiveReversal
+    /// Attempt to refund an amount larger than the remaining settled amount of a debit
+    case excessiveRefund
+    /// Attempt to expiry an authorization that is already expired
+    case alreadyExpired
     /// Transaction type is invalid/illegal.
     case InvalidTransactionType
     /// Simulate authorization API call failed generically - this is generally a sign of a programmatic failure or bug within the kit.
@@ -31,6 +37,8 @@ public enum SudoVirtualCardsSimulatorError: Error, Equatable {
     case simulateIncrementalAuthorizationFailed
     /// Simulate reversal API call failed generically - this is generally a sign of a programmatic failure or bug within the kit.
     case simulateReversalFailed
+    /// Simulate authorization expiry API call failed generically - this is generally a sign of a programmatic failure or bug within the kit.
+    case simulateAuthorizationExpiryFailed
     /// Simulate refund API call failed generically - this is generally a sign of a programmatic failure or bug within the kit.
     case simulateRefundFailed
     /// Simulate credit API call failed generically - this is generally a sign of a programmatic failure or bug within the kit.
@@ -63,6 +71,12 @@ public enum SudoVirtualCardsSimulatorError: Error, Equatable {
             self = .merchantNotFound
         case "sudoplatform.virtual-cards.InvalidTransactionTypeError":
             self = .InvalidTransactionType
+        case "sudoplatform.virtual-cards.ExcessiveReversalError":
+            self = .excessiveReversal
+        case "sudoplatform.virtual-cards.ExcessiveRefundError":
+            self = .excessiveRefund
+        case "sudoplatform.virtual-cards.AlreadyExpiredError":
+            self = .alreadyExpired
         default:
             return nil
         }

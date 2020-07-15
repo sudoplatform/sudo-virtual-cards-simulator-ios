@@ -75,6 +75,22 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     ///     - SudoVirtualCardsSimulatorError.
     func simulateReversalWithInput(_ input: SimulateReversalInput, completion: @escaping ClientCompletion<SimulateReversalResponse>)
 
+    /// Simulate expory of a pending authorization expiry (`.pending`).
+    ///
+    /// This causes a pending transaction to expire as if reversed
+    ///
+    /// - Parameters:
+    ///   - id: id of pending authorization to expire
+    /// - Returns:
+    ///   - Success: Response data from the simulation request.
+    ///   - Failure:
+    ///     - SudoPlatformError.
+    ///     - SudoVirtualCardsSimulatorError.
+    func simulateAuthorizationExpiryWithId(
+        _ id: String,
+        completion: @escaping ClientCompletion<SimulateAuthorizationExpiryResponse>
+    )
+
     /// Simulate a refund transaction (`.refund`).
     ///
     /// Simulating a refund will generate a refund transaction. Simulating a refund does not mutate any existing records, and instead generates a new refund
