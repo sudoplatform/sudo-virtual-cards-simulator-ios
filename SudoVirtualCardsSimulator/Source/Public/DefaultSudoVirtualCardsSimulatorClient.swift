@@ -323,7 +323,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
 
     public func getSimulatorMerchants(_ completion: @escaping ClientCompletion<[SimulatorMerchant]>) {
         let query = ListSimulatorMerchantsQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: .useOnline, logger: logger)
+        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: .remoteOnly, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -360,7 +360,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
 
     public func getSimulatorConversionRates(_ completion: @escaping ClientCompletion<[CurrencyAmount]>) {
         let query = ListSimulatorConversionRatesQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: .useOnline, logger: logger)
+        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: .remoteOnly, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
