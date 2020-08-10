@@ -30,7 +30,7 @@ target 'SudoVirtualCardsSimulatorIntegrationTests' do
   inherit! :search_paths
   podspec :name => 'SudoVirtualCardsSimulator'
   pod 'SudoIdentityVerification', '~> 4.7'
-  pod 'SudoVirtualCards', '~> 8.1'
+  pod 'SudoVirtualCards', '~> 9.0'
 end
 
 # Fix Xcode nagging warning on pod install/update
