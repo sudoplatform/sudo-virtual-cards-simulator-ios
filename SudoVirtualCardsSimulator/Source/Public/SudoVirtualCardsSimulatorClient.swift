@@ -133,8 +133,7 @@ public protocol SudoVirtualCardsSimulatorClient: class {
 
     /// Retrieve a list of supported simulated merchants.
     ///
-    /// This method returns all the supported merchants available to perform transaction simulations. A list of these merchants can also be found
-    /// [here](www.example.com/todo-add-link-to-merchants).
+    /// This method returns all the supported merchants available to perform transaction simulations.
     ///
     /// - Returns:
     ///   - Success: Merchants supported by the simulator.
@@ -144,8 +143,7 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     func getSimulatorMerchants(_ completion: @escaping ClientCompletion<[SimulatorMerchant]>)
 
     /// Retrieve a list of conversion rates of supported currencies.
-    /// This method returns all the supported currency conversion rates used by the simulator. A list of these rates can also be found
-    /// [here](www.example.com/todo-add-link-to-rates).
+    /// This method returns all the supported currency conversion rates used by the simulator.
     ///
     /// - Returns:
     ///   - Success: Currency conversion rates used by the simulator.
