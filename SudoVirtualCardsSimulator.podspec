@@ -1,7 +1,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                  = 'SudoVirtualCardsSimulator'
-  spec.version               = '3.1.2'
+  spec.version               = '3.2.0'
   spec.author                = { 'Sudo Platform Engineering' => 'sudoplatform-engineering@anonyome.com' }
   spec.homepage              = 'https://sudoplatform.com'
 
@@ -10,13 +10,13 @@ Pod::Spec.new do |spec|
 
   spec.source                = { :git => 'https://github.com/sudoplatform/sudo-virtual-cards-simulator-ios.git', :tag => "v#{spec.version}" }
   spec.source_files          = 'SudoVirtualCardsSimulator/**/*.swift'
-  spec.ios.deployment_target = '11.0'
+  spec.ios.deployment_target = '13.0'
   spec.requires_arc          = true
   spec.swift_version         = '5.0'
 
-  spec.dependency 'SudoLogging', '~> 0.2'
-  spec.dependency 'SudoUser', '~> 7.10'
-  spec.dependency 'SudoOperations', '~> 3.1'
+  spec.dependency 'SudoLogging', '~> 0.3'
+  spec.dependency 'SudoUser', '~> 7.14'
+  spec.dependency 'SudoOperations', '~> 3.3'
   spec.dependency 'AWSAppSync', '~> 3.1'
 end
 

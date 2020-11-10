@@ -1,7 +1,7 @@
 #
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '11.0'
+platform :ios, '13.0'
 
 workspace 'SudoVirtualCardsSimulator'
 use_frameworks!
@@ -19,18 +19,19 @@ project 'SudoVirtualCardsSimulator', {
 target 'SudoVirtualCardsSimulator' do
   inherit! :search_paths
   podspec :name => 'SudoVirtualCardsSimulator'
-end
 
-target 'SudoVirtualCardsSimulatorTests' do
-  inherit! :search_paths
-  podspec :name => 'SudoVirtualCardsSimulator'
-end
+  target 'SudoVirtualCardsSimulatorTests' do
+    inherit! :search_paths
+    podspec :name => 'SudoVirtualCardsSimulator'
+  end
 
-target 'SudoVirtualCardsSimulatorIntegrationTests' do
-  inherit! :search_paths
-  podspec :name => 'SudoVirtualCardsSimulator'
-  pod 'SudoIdentityVerification', '~> 4.7'
-  pod 'SudoVirtualCards', '~> 9.0'
+  target 'SudoVirtualCardsSimulatorIntegrationTests' do
+    inherit! :search_paths
+    podspec :name => 'SudoVirtualCardsSimulator'
+    pod 'SudoIdentityVerification', '~> 4.8'
+    pod 'SudoVirtualCards', '~> 9.0'
+  end
+
 end
 
 # Fix Xcode nagging warning on pod install/update
