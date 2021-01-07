@@ -8,8 +8,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 project 'SudoVirtualCardsSimulator', {
-  'Debug-Dev' => :debug,
-  'Debug-QA' => :debug,
+  'Debug-Dev' => :debug, 'Debug-QA' => :debug,
   'Debug-Prod' => :debug,
   'Release-Dev' => :release,
   'Release-QA' => :release,
@@ -28,8 +27,8 @@ target 'SudoVirtualCardsSimulator' do
   target 'SudoVirtualCardsSimulatorIntegrationTests' do
     inherit! :search_paths
     podspec :name => 'SudoVirtualCardsSimulator'
-    pod 'SudoIdentityVerification', '~> 4.8'
-    pod 'SudoVirtualCards', '~> 9.0'
+    pod 'SudoIdentityVerification', '~> 5.0'
+    # pod 'SudoVirtualCards', '~> 9.0'
   end
 
 end
