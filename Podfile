@@ -27,7 +27,7 @@ target 'SudoVirtualCardsSimulator' do
   target 'SudoVirtualCardsSimulatorIntegrationTests' do
     inherit! :search_paths
     podspec :name => 'SudoVirtualCardsSimulator'
-    pod 'SudoIdentityVerification', '~> 5.0'
+    pod 'SudoIdentityVerification', '~> 6.0'
     # pod 'SudoVirtualCards', '~> 9.0'
   end
 
