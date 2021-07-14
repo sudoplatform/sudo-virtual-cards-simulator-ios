@@ -5,6 +5,7 @@
 //
 
 import AWSAppSync
+import AWSCore
 
 /// Disables Cyclomatic Dependency for `AWSRegionType` as the kit has no control over `AWSRegionType`.
 // swiftlint:disable cyclomatic_complexity

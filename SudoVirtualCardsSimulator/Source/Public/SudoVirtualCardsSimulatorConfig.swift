@@ -6,6 +6,7 @@
 
 import Foundation
 import AWSAppSync
+import AWSCore
 
 /// Configuration for connecting to the Sudo VirtualCards Simulator Service via AppSync.
 public struct SudoVirtualCardsSimulatorConfig: AWSAppSyncServiceConfigProvider, Decodable {

@@ -9,6 +9,7 @@ import SudoOperations
 import SudoUser
 import SudoLogging
 import AWSAppSync
+import SudoApiClient
 
 /// Default Client API Endpoint for interacting with the virtual cards service simulator.
 public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorClient {
@@ -29,7 +30,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
     private let operationFactory: OperationFactory
 
     /// Used to make GraphQL requests to AWS. Injected into operations to delegate the calls.
-    private let appSyncClient: AWSAppSyncClient
+    private let graphQLClient: SudoApiClient
 
     /// Logging utility for debugging and diagnostics.
     private let logger: Logger
@@ -81,12 +82,13 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
         }
         let appSyncConfig = try AWSAppSyncClientConfiguration(appSyncServiceConfig: config, userPoolsAuthProvider: userPoolsAuthProvider)
         let appSyncClient = try AWSAppSyncClient(appSyncConfig: appSyncConfig)
-        self.init(appSyncClient: appSyncClient)
+        let graphQLClient = try SudoApiClient(appSyncClient: appSyncClient)
+        self.init(graphQLClient: graphQLClient)
     }
 
     /// Initialize a default virtual cards simulator instance. **This is intended purely for internal use only.**
-    internal init(appSyncClient: AWSAppSyncClient, operationFactory: OperationFactory = OperationFactory(), logger: Logger = Logger.virtualCardsSDKLogger) {
-        self.appSyncClient = appSyncClient
+    internal init(graphQLClient: SudoApiClient, operationFactory: OperationFactory = OperationFactory(), logger: Logger = Logger.virtualCardsSDKLogger) {
+        self.graphQLClient = graphQLClient
         self.operationFactory = operationFactory
         self.logger = logger
     }
@@ -96,8 +98,13 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
     public func reset() throws {
         logger.info("Resetting client state.")
 
-        try self.appSyncClient.clearCaches(options: .init(clearQueries: true,
-                                                          clearMutations: true, clearSubscriptions: true))
+        try self.graphQLClient.clearCaches(
+            options: .init(
+                clearQueries: true,
+                clearMutations: true,
+                clearSubscriptions: true
+            )
+        )
         queue.cancelAllOperations()
     }
 
@@ -126,7 +133,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
             billingAddress: billingAddress,
             csc: csc)
         let mutation = SimulateAuthorizationMutation(input: request)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
         let completionObserver = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -160,12 +167,16 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
         _ input: SimulateIncrementalAuthorizationInput,
         completion: @escaping ClientCompletion<SimulateAuthorizationResponse>
     ) {
-        let input = SimulateIncrementalAuthorizationRequest(amount: input.amount,
-                                                            authorizationId: input.authorizationId)
+        let input = SimulateIncrementalAuthorizationRequest(
+            amount: input.amount,
+            authorizationId: input.authorizationId
+        )
         let mutation = SimulateIncrementalAuthorizationMutation(input: input)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation,
-                                                                   appSyncClient: appSyncClient,
-                                                                   logger: logger)
+        let operation = operationFactory.generateMutationOperation(
+            mutation: mutation,
+            graphQLClient: graphQLClient,
+            logger: logger
+        )
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -198,7 +209,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
     public func simulateReversalWithInput(_ input: SimulateReversalInput, completion: @escaping ClientCompletion<SimulateReversalResponse>) {
         let input = SimulateReversalRequest(amount: input.amount, authorizationId: input.authorizationId)
         let mutation = SimulateReversalMutation(input: input)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -233,7 +244,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
         let input = SimulateAuthorizationExpiryRequest(
             authorizationId: id)
         let mutation = SimulateAuthorizationExpiryMutation(input: input)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -260,7 +271,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
     public func simulateRefundWithInput(_ input: SimulateRefundInput, completion: @escaping ClientCompletion<SimulateRefundResponse>) {
         let input = SimulateRefundRequest(amount: input.amount, debitId: input.debitId)
         let mutation = SimulateRefundMutation(input: input)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -291,7 +302,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
     public func simulateDebitWithInput(_ input: SimulateDebitInput, completion: @escaping ClientCompletion<SimulateDebitResponse>) {
         let input = SimulateDebitRequest(amount: input.amount, authorizationId: input.authorizationId)
         let mutation = SimulateDebitMutation(input: input)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -323,7 +334,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
 
     public func getSimulatorMerchants(_ completion: @escaping ClientCompletion<[SimulatorMerchant]>) {
         let query = ListSimulatorMerchantsQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: .remoteOnly, logger: logger)
+        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: .remoteOnly, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))
@@ -360,7 +371,7 @@ public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorCl
 
     public func getSimulatorConversionRates(_ completion: @escaping ClientCompletion<[CurrencyAmount]>) {
         let query = ListSimulatorConversionRatesQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: .remoteOnly, logger: logger)
+        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: .remoteOnly, logger: logger)
         let observer = PlatformBlockObserver(finishHandler: { [weak self] _, errors in
             if let error = errors.first {
                 completion(.failure(error))

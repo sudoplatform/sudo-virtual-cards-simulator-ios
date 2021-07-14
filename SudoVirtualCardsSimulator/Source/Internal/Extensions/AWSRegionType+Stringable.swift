@@ -5,6 +5,7 @@
 //
 
 import AWSAppSync
+import AWSCore
 
 extension AWSRegionType {
 
