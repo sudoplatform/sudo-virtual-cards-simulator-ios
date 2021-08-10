@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Sort Files
+perl util/sort-Xcode-project-file SudoVirtualCardsSimulator.xcodeproj/project.pbxproj
+
+if [[ `git status --porcelain` ]]; then
+    echo "please run 'perl util/sort-xcode-project-file SudoVirtualCardsSimulator.xcodeproj/project.pbxproj' locally and commit again"
+    exit 1
+fi
