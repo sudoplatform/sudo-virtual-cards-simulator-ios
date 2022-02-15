@@ -21,23 +21,23 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          SudoVirtualCardsSimulator 7.0.2 Docs
+          SudoVirtualCardsSimulator 8.0.0 Docs
         </a>
         
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="../search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
     </header>
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoVirtualCardsSimulator Reference</a>
-      <img class="carat" src="../img/carat.png" />
+      <img class="carat" src="../img/carat.png" alt=""/>
       SudoVirtualCardsSimulatorClient Protocol Reference
     </p>
 
@@ -126,14 +126,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -143,6 +135,7 @@
             <h1>SudoVirtualCardsSimulatorClient</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SudoVirtualCardsSimulatorClient</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
@@ -166,7 +159,7 @@ only meant to be used for initializing an instance of the client.</p>
                 <a name="//apple_ref/swift/Section/Lifecycle" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Lifecycle"></a>
-                  <h3 class="section-name"><p>Lifecycle</p>
+                  <h3 class="section-name"><span>Lifecycle</span>
 </h3>
                 </div>
               </div>
@@ -205,11 +198,11 @@ sudo services.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Mutations:%20Transactions"></a>
+                <a name="/Mutations%3A%20Transactions"></a>
                 <a name="//apple_ref/swift/Section/Mutations: Transactions" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/Mutations:%20Transactions"></a>
-                  <h3 class="section-name"><p>Mutations: Transactions</p>
+                  <a class="section-name-link" href="#/Mutations%3A%20Transactions"></a>
+                  <h3 class="section-name"><span>Mutations: Transactions</span>
 </h3>
                 </div>
               </div>
@@ -217,10 +210,13 @@ sudo services.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP30simulateAuthorizationWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/simulateAuthorizationWithInput(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP30simulateAuthorizationWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF">simulateAuthorizationWithInput(_:<wbr>completion:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP30simulateAuthorizationWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF"></a>
+                    <a name="//apple_ref/swift/Method/simulateAuthorizationWithInput(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP30simulateAuthorizationWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF">simulateAuthorizationWithInput(_:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -236,7 +232,7 @@ sudo services.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateAuthorizationWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateAuthorizationInput.html">SimulateAuthorizationInput</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SimulateAuthorizationResponse.html">SimulateAuthorizationResponse</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateAuthorizationWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateAuthorizationInput.html">SimulateAuthorizationInput</a></span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SimulateAuthorizationResponse.html">SimulateAuthorizationResponse</a></span></code></pre>
 
                         </div>
                       </div>
@@ -262,8 +258,11 @@ sudo services.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Response data from the simulation request.</li>
-<li>Failure:</li>
+<li>Response data from the simulation request.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -274,10 +273,13 @@ sudo services.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP41simulateIncrementalAuthorizationWithInput_10completionyAA08SimulateghJ0V_ys6ResultOyAA0lH8ResponseVs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/simulateIncrementalAuthorizationWithInput(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP41simulateIncrementalAuthorizationWithInput_10completionyAA08SimulateghJ0V_ys6ResultOyAA0lH8ResponseVs5Error_pGctF">simulateIncrementalAuthorizationWithInput(_:<wbr>completion:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP41simulateIncrementalAuthorizationWithInputyAA08SimulateH8ResponseVAA0kghJ0VYaKF"></a>
+                    <a name="//apple_ref/swift/Method/simulateIncrementalAuthorizationWithInput(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP41simulateIncrementalAuthorizationWithInputyAA08SimulateH8ResponseVAA0kghJ0VYaKF">simulateIncrementalAuthorizationWithInput(_:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -294,9 +296,8 @@ sudo services.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateIncrementalAuthorizationWithInput</span><span class="p">(</span>
-    <span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateIncrementalAuthorizationInput.html">SimulateIncrementalAuthorizationInput</a></span><span class="p">,</span>
-    <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SimulateAuthorizationResponse.html">SimulateAuthorizationResponse</a></span><span class="o">&gt;</span>
-<span class="p">)</span></code></pre>
+<span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateIncrementalAuthorizationInput.html">SimulateIncrementalAuthorizationInput</a></span>
+<span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SimulateAuthorizationResponse.html">SimulateAuthorizationResponse</a></span></code></pre>
 
                         </div>
                       </div>
@@ -322,8 +323,11 @@ sudo services.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Response data from the simulation request.</li>
-<li>Failure:</li>
+<li>Response data from the simulation request.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -334,10 +338,13 @@ sudo services.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP25simulateReversalWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/simulateReversalWithInput(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP25simulateReversalWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF">simulateReversalWithInput(_:<wbr>completion:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP25simulateReversalWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF"></a>
+                    <a name="//apple_ref/swift/Method/simulateReversalWithInput(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP25simulateReversalWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF">simulateReversalWithInput(_:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -357,7 +364,7 @@ amount is reversed, the authorization transaction record will be deleted.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateReversalWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateReversalInput.html">SimulateReversalInput</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SimulateReversalResponse.html">SimulateReversalResponse</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateReversalWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateReversalInput.html">SimulateReversalInput</a></span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SimulateReversalResponse.html">SimulateReversalResponse</a></span></code></pre>
 
                         </div>
                       </div>
@@ -383,8 +390,11 @@ amount is reversed, the authorization transaction record will be deleted.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Response data from the simulation request.</li>
-<li>Failure:</li>
+<li>Response data from the simulation request.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -395,10 +405,13 @@ amount is reversed, the authorization transaction record will be deleted.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP33simulateAuthorizationExpiryWithId_10completionySS_ys6ResultOyAA08SimulategH8ResponseVs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/simulateAuthorizationExpiryWithId(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP33simulateAuthorizationExpiryWithId_10completionySS_ys6ResultOyAA08SimulategH8ResponseVs5Error_pGctF">simulateAuthorizationExpiryWithId(_:<wbr>completion:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP33simulateAuthorizationExpiryWithIdyAA08SimulategH8ResponseVSSYaKF"></a>
+                    <a name="//apple_ref/swift/Method/simulateAuthorizationExpiryWithId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP33simulateAuthorizationExpiryWithIdyAA08SimulategH8ResponseVSSYaKF">simulateAuthorizationExpiryWithId(_:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -414,10 +427,7 @@ amount is reversed, the authorization transaction record will be deleted.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateAuthorizationExpiryWithId</span><span class="p">(</span>
-    <span class="n">_</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SimulateAuthorizationExpiryResponse.html">SimulateAuthorizationExpiryResponse</a></span><span class="o">&gt;</span>
-<span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateAuthorizationExpiryWithId</span><span class="p">(</span><span class="n">_</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SimulateAuthorizationExpiryResponse.html">SimulateAuthorizationExpiryResponse</a></span></code></pre>
 
                         </div>
                       </div>
@@ -443,8 +453,11 @@ amount is reversed, the authorization transaction record will be deleted.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Response data from the simulation request.</li>
-<li>Failure:</li>
+<li>Response data from the simulation request.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -455,10 +468,13 @@ amount is reversed, the authorization transaction record will be deleted.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP23simulateRefundWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/simulateRefundWithInput(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP23simulateRefundWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF">simulateRefundWithInput(_:<wbr>completion:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP23simulateRefundWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF"></a>
+                    <a name="//apple_ref/swift/Method/simulateRefundWithInput(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP23simulateRefundWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF">simulateRefundWithInput(_:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -480,7 +496,7 @@ will generate a new refund transaction record of the partially refunded amount.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateRefundWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateRefundInput.html">SimulateRefundInput</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SimulateRefundResponse.html">SimulateRefundResponse</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateRefundWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateRefundInput.html">SimulateRefundInput</a></span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SimulateRefundResponse.html">SimulateRefundResponse</a></span></code></pre>
 
                         </div>
                       </div>
@@ -506,8 +522,11 @@ will generate a new refund transaction record of the partially refunded amount.<
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Response data from the simulation request.</li>
-<li>Failure:</li>
+<li>Response data from the simulation request.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -518,10 +537,13 @@ will generate a new refund transaction record of the partially refunded amount.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP22simulateDebitWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF"></a>
-                    <a name="//apple_ref/swift/Method/simulateDebitWithInput(_:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP22simulateDebitWithInput_10completionyAA08SimulategI0V_ys6ResultOyAA0kG8ResponseVs5Error_pGctF">simulateDebitWithInput(_:<wbr>completion:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP22simulateDebitWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF"></a>
+                    <a name="//apple_ref/swift/Method/simulateDebitWithInput(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP22simulateDebitWithInputyAA08SimulateG8ResponseVAA0jgI0VYaKF">simulateDebitWithInput(_:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -543,7 +565,7 @@ debited, which will generate a debit record of the partially debited amount.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateDebitWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateDebitInput.html">SimulateDebitInput</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SimulateDebitResponse.html">SimulateDebitResponse</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">simulateDebitWithInput</span><span class="p">(</span><span class="n">_</span> <span class="nv">input</span><span class="p">:</span> <span class="kt"><a href="../Structs/SimulateDebitInput.html">SimulateDebitInput</a></span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/SimulateDebitResponse.html">SimulateDebitResponse</a></span></code></pre>
 
                         </div>
                       </div>
@@ -569,8 +591,11 @@ debited, which will generate a debit record of the partially debited amount.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Response data from the simulation request.</li>
-<li>Failure:</li>
+<li>Response data from the simulation request.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -586,7 +611,7 @@ debited, which will generate a debit record of the partially debited amount.</p>
                 <a name="//apple_ref/swift/Section/Queries" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Queries"></a>
-                  <h3 class="section-name"><p>Queries</p>
+                  <h3 class="section-name"><span>Queries</span>
 </h3>
                 </div>
               </div>
@@ -594,10 +619,13 @@ debited, which will generate a debit record of the partially debited amount.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD9Merchantsyyys6ResultOySayAA0D8MerchantVGs5Error_pGcF"></a>
-                    <a name="//apple_ref/swift/Method/getSimulatorMerchants(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD9Merchantsyyys6ResultOySayAA0D8MerchantVGs5Error_pGcF">getSimulatorMerchants(_:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD9MerchantsSayAA0D8MerchantVGyYaKF"></a>
+                    <a name="//apple_ref/swift/Method/getSimulatorMerchants()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD9MerchantsSayAA0D8MerchantVGyYaKF">getSimulatorMerchants()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -613,15 +641,18 @@ debited, which will generate a debit record of the partially debited amount.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSimulatorMerchants</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/SimulatorMerchant.html">SimulatorMerchant</a></span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSimulatorMerchants</span><span class="p">()</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/SimulatorMerchant.html">SimulatorMerchant</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Merchants supported by the simulator.</li>
-<li>Failure:</li>
+<li>Merchants supported by the simulator.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -632,10 +663,13 @@ debited, which will generate a debit record of the partially debited amount.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesyyys6ResultOySayAA14CurrencyAmountVGs5Error_pGcF"></a>
-                    <a name="//apple_ref/swift/Method/getSimulatorConversionRates(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesyyys6ResultOySayAA14CurrencyAmountVGs5Error_pGcF">getSimulatorConversionRates(_:<wbr>)</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesSayAA14CurrencyAmountVGyYaKF"></a>
+                    <a name="//apple_ref/swift/Method/getSimulatorConversionRates()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD6ClientP03getD15ConversionRatesSayAA14CurrencyAmountVGyYaKF">getSimulatorConversionRates()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -650,15 +684,18 @@ This method returns all the supported currency conversion rates used by the simu
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSimulatorConversionRates</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSimulatorConversionRates</span><span class="p">()</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/CurrencyAmount.html">CurrencyAmount</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p><ul>
-<li>Success: Currency conversion rates used by the simulator.</li>
-<li>Failure:</li>
+<li>Currency conversion rates used by the simulator.</li>
+</ul><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    
+</div><ul>
 <li>SudoPlatformError.</li>
 <li>SudoVirtualCardsSimulatorError.</li>
 </ul></p>
@@ -674,9 +711,8 @@ This method returns all the supported currency conversion rates used by the simu
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2021-08-10)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2022 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2022-02-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>

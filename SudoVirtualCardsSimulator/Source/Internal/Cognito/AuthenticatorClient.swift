@@ -10,11 +10,11 @@ import AWSMobileClient
 /// Facade class for `AWSMobileClient`. Aids in testability.
 protocol UserPoolAuthenticator {
 
-    func initialize(_ completionHandler: @escaping (UserState?, Error?) -> Void)
+    func initialize() async throws -> (UserState?, Error?)
 
-    func signIn(username: String, password: String, completionHandler: @escaping ((SignInResult?, Error?) -> Void))
+    func signIn(username: String, password: String) async throws -> (SignInResult?, Error?)
 
-    func getTokens(_ completionHandler: @escaping (Tokens?, Error?) -> Void)
+    func getTokens() async throws -> (Tokens?, Error?)
 }
 
 /// Concrete class of `UserPoolAuthenticator`.
@@ -32,15 +32,27 @@ class AWSUserPoolAuthenticator: UserPoolAuthenticator {
 
     // MARK: - Conformance: UserPoolAuthenticator
 
-    func initialize(_ completionHandler: @escaping (UserState?, Error?) -> Void) {
-        mobileClient.initialize(completionHandler)
+    func initialize() async throws -> (UserState?, Error?) {
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<(result: UserState?, error: Error?), Error>) in
+            mobileClient.initialize({ (result, error) in
+                continuation.resume(returning: (result, error))
+            })
+        })
     }
 
-    func signIn(username: String, password: String, completionHandler: @escaping ((SignInResult?, Error?) -> Void)) {
-        mobileClient.signIn(username: username, password: password, completionHandler: completionHandler)
+    func signIn(username: String, password: String) async throws -> (SignInResult?, Error?) {
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<(result: SignInResult?, error: Error?), Error>) in
+            mobileClient.signIn(username: username, password: password, completionHandler: { (result, error) in
+                continuation.resume(returning: (result, error))
+            })
+        })
     }
 
-    func getTokens(_ completionHandler: @escaping (Tokens?, Error?) -> Void) {
-        mobileClient.getTokens(completionHandler)
+    func getTokens() async throws -> (Tokens?, Error?) {
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<(result: Tokens?, error: Error?), Error>) in
+            mobileClient.getTokens({ (result, error) in
+                continuation.resume(returning: (result, error))
+            })
+        })
     }
 }

@@ -21,23 +21,23 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          SudoVirtualCardsSimulator 7.0.2 Docs
+          SudoVirtualCardsSimulator 8.0.0 Docs
         </a>
         
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="../search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
     </header>
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoVirtualCardsSimulator Reference</a>
-      <img class="carat" src="../img/carat.png" />
+      <img class="carat" src="../img/carat.png" alt=""/>
       SudoVirtualCardsSimulatorError Enumeration Reference
     </p>
 
@@ -126,14 +126,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Typealiases.html#/s:25SudoVirtualCardsSimulator16ClientCompletiona">ClientCompletion</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -143,6 +135,7 @@
             <h1>SudoVirtualCardsSimulatorError</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SudoVirtualCardsSimulatorError</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
@@ -699,9 +692,147 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO08internalE0yA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/internalError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO08internalE0yA2CmF">internalError</a>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO13notAuthorizedyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/notAuthorized" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO13notAuthorizedyA2CmF">notAuthorized</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates that the request operation failed due to authorization error. This maybe due to the authentication
+token being invalid or other security controls that prevent the user from accessing the API.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">notAuthorized</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO14invalidRequestyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidRequest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO14invalidRequestyA2CmF">invalidRequest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Operation failed due to an invalid request. This maybe due to the version mismatch between the
+client and the backend.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidRequest</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO17rateLimitExceededyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/rateLimitExceeded" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO17rateLimitExceededyA2CmF">rateLimitExceeded</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates that there were too many attempts at sending API requests within a short period of time.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">rateLimitExceeded</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO07serviceE0yA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/serviceError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO07serviceE0yA2CmF">serviceError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates that an internal server error caused the operation to fail. The error is possibly transient and
+retrying at a later time may cause the operation to complete successfully</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">serviceError</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO12graphQLErroryACSS_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/graphQLError(description:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO12graphQLErroryACSS_tcACmF">graphQLError(description:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates that a GraphQL error was returned by the backend.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">graphQLError</span><span class="p">(</span><span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO08internalE0yACSScACmF"></a>
+                    <a name="//apple_ref/swift/Element/internalError(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO08internalE0yACSScACmF">internalError(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -716,7 +847,101 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">internalError</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">internalError</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO13requestFailedyACSo17NSHTTPURLResponseCSg_s0E0_pSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/requestFailed(response:cause:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO13requestFailedyACSo17NSHTTPURLResponseCSg_s0E0_pSgtcACmF">requestFailed(response:<wbr>cause:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates that the request failed due to connectivity, availability or access error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">requestFailed</span><span class="p">(</span><span class="nv">response</span><span class="p">:</span> <span class="kt">HTTPURLResponse</span><span class="p">?,</span> <span class="nv">cause</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:25SudoVirtualCardsSimulator0abcD5ErrorO05fatalE0yACSS_tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/fatalError(description:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:25SudoVirtualCardsSimulator0abcD5ErrorO05fatalE0yACSS_tcACmF">fatalError(description:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates that a fatal error occurred. This could be due to coding error, out-of-memory condition or other
+conditions that is beyond control of <code>SudoVirtualCardsSimulator</code> implementation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">fatalError</span><span class="p">(</span><span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Conformance%3A%20Equatable"></a>
+                <a name="//apple_ref/swift/Section/Conformance: Equatable" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Conformance%3A%20Equatable"></a>
+                  <h3 class="section-name"><span>Conformance: Equatable</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SQ2eeoiySbx_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">SudoVirtualCardsSimulatorError</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">SudoVirtualCardsSimulatorError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -731,9 +956,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2021-08-10)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2022 <a class="link" href="https://sudoplatform.com" target="_blank" rel="external noopener">Sudo Platform Engineering</a>. All rights reserved. (Last updated: 2022-02-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>

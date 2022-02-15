@@ -8,17 +8,11 @@ import Foundation
 import SudoLogging
 import AWSMobileClient
 import AWSAppSync
-import SudoOperations
 
 /// Provides the authentication for all GraphQL API calls to the Simulator Service.
 ///
 /// This is used when the client is configured to be authenticated via Cognito User Pools.
 class SimulatorCognitoUserPoolAuthProvider: AWSCognitoUserPoolsAuthProviderAsync {
-
-    // MARK: - Supplementary
-
-    /// Typealias for all callback completions used in `AWSCognitoUserPoolsAuthProviderAsync.getLatestAuthToken`
-    typealias CallbackCompletion = (String?, Error?) -> Void
 
     // MARK: - Properties
 
@@ -30,9 +24,6 @@ class SimulatorCognitoUserPoolAuthProvider: AWSCognitoUserPoolsAuthProviderAsync
 
     /// Internal mobile client used to perform the authentication via the user pool.
     let authenticator: UserPoolAuthenticator
-
-    /// Platform Operation Queue used to run the operations.
-    var queue: PlatformOperationQueue = PlatformOperationQueue()
 
     /// Logging instance.
     let logger: Logger
@@ -75,54 +66,47 @@ class SimulatorCognitoUserPoolAuthProvider: AWSCognitoUserPoolsAuthProviderAsync
         ]
     }
 
-    // MARK: - Helpers
-
-    /// Generates a finish handler, used in a `PlaformBlockObserver` that is attached to all operations spawned in this class.
-    ///
-    /// - Parameter callback: Callback from `getLatestAuthToken(_:)` to embed in a finish handler.
-    func generateFinishHandler(callback: @escaping CallbackCompletion) -> PlatformBlockObserver.FinishHandler {
-        return { operation, errors in
-            // Catch all error handles
-            guard errors.isEmpty else {
-                callback(nil, errors.first)
-                return
-            }
-            /// From this point onward we only care about results from `UserPoolsGetTokenOperation`.
-            guard let operation = operation as? UserPoolsGetTokenOperation else {
-                return
-            }
-            callback(operation.result, nil)
-        }
-    }
-
     // MARK: - Conformance: AWSCognitoUserPoolsAuthProviderAsync
 
-    func getLatestAuthToken(_ callback: @escaping CallbackCompletion) {
-        authenticator.initialize { state, error in
-            if let error = error {
+    func getLatestAuthToken(_ callback: @escaping (String?, Error?) -> Void) {
+        Task.detached(priority: .medium) {
+            do {
+                let (state, initError) = try await self.authenticator.initialize()
+                if let error = initError {
+                    callback(nil, error)
+                    return
+                }
+                guard let state = state else {
+                    callback(nil, SudoVirtualCardsSimulatorError.internalError(""))
+                    return
+                }
+                if state != .signedIn {
+                    let (signInResult, signInError) = try await self.authenticator.signIn(username: self.username, password: self.password)
+                    if let error = signInError {
+                        callback(nil, error)
+                        return
+                    }
+                    guard signInResult != nil else {
+                        callback(nil, SudoVirtualCardsSimulatorError.internalError(""))
+                        return
+                    }
+                } else {
+                    let (tokens, tokenError) = try await self.authenticator.getTokens()
+                    if let error = tokenError {
+                        callback(nil, error)
+                        return
+                    }
+                    guard let token = tokens?.idToken?.tokenString else {
+                        callback(nil, SudoVirtualCardsSimulatorError.internalError(""))
+                        return
+                    }
+                    callback(token, nil)
+                    return
+                }
+            } catch {
                 callback(nil, error)
                 return
             }
-            guard let state = state else {
-                /// This error should **never** occur.
-                callback(nil, SudoVirtualCardsSimulatorError.internalError)
-                return
-            }
-            let operationCompletionObserver = PlatformBlockObserver(finishHandler: self.generateFinishHandler(callback: callback))
-            let getTokenOperation = UserPoolsGetTokenOperation(authenticator: self.authenticator, logger: self.logger)
-            getTokenOperation.addObserver(operationCompletionObserver)
-            if state != .signedIn {
-                let signInOperation = UserPoolsSignInOperation(
-                    username: self.username,
-                    password: self.password,
-                    authenticator: self.authenticator,
-                    logger: self.logger
-                )
-                signInOperation.addObserver(operationCompletionObserver)
-                getTokenOperation.addDependency(signInOperation)
-                self.queue.addOperation(signInOperation)
-            }
-            self.queue.addOperation(getTokenOperation)
         }
     }
 }

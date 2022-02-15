@@ -6,10 +6,6 @@
 
 import Foundation
 
-/// Generic type associated with API completion/closure handlers. Generic type O is the expected output result in a
-/// success case.
-public typealias ClientCompletion<O> = (Swift.Result<O, Error>) -> Void
-
 /// Client used to interface with the virtual cards service simulator.
 ///
 /// This client allows you to simulate the use of a virtual card at merchants to generate transaction events. The simulator is only available in sandbox
@@ -17,7 +13,7 @@ public typealias ClientCompletion<O> = (Swift.Result<O, Error>) -> Void
 ///
 /// It is recommended to code to this interface, rather than the implementation class (`DefaultSudoVirtualCardsSimulatorClient`) as the implementation class is
 /// only meant to be used for initializing an instance of the client.
-public protocol SudoVirtualCardsSimulatorClient: class {
+public protocol SudoVirtualCardsSimulatorClient: AnyObject {
 
     // MARK: - Lifecycle
 
@@ -36,11 +32,11 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// - Parameters:
     ///   - input: Input used to configure the authorization.
     /// - Returns:
-    ///   - Success: Response data from the simulation request.
-    ///   - Failure:
+    ///   - Response data from the simulation request.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func simulateAuthorizationWithInput(_ input: SimulateAuthorizationInput, completion: @escaping ClientCompletion<SimulateAuthorizationResponse>)
+    func simulateAuthorizationWithInput(_ input: SimulateAuthorizationInput) async throws -> SimulateAuthorizationResponse
 
     /// Simulate an incremental authorization transaction (`.pending`).
     ///
@@ -49,14 +45,13 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// - Parameters:
     ///   - input: Input used to configure the incremental authorization.
     /// - Returns:
-    ///   - Success: Response data from the simulation request.
-    ///   - Failure:
+    ///   - Response data from the simulation request.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
     func simulateIncrementalAuthorizationWithInput(
-        _ input: SimulateIncrementalAuthorizationInput,
-        completion: @escaping ClientCompletion<SimulateAuthorizationResponse>
-    )
+    _ input: SimulateIncrementalAuthorizationInput
+    ) async throws -> SimulateAuthorizationResponse
 
     /// Simulate an authorization reversal transaction.
     ///
@@ -69,11 +64,11 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// - Parameters:
     ///   - input: Input used to configure the reversal.
     /// - Returns:
-    ///   - Success: Response data from the simulation request.
-    ///   - Failure:
+    ///   - Response data from the simulation request.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func simulateReversalWithInput(_ input: SimulateReversalInput, completion: @escaping ClientCompletion<SimulateReversalResponse>)
+    func simulateReversalWithInput(_ input: SimulateReversalInput) async throws -> SimulateReversalResponse
 
     /// Simulate expory of a pending authorization expiry (`.pending`).
     ///
@@ -82,14 +77,11 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// - Parameters:
     ///   - id: id of pending authorization to expire
     /// - Returns:
-    ///   - Success: Response data from the simulation request.
-    ///   - Failure:
+    ///   - Response data from the simulation request.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func simulateAuthorizationExpiryWithId(
-        _ id: String,
-        completion: @escaping ClientCompletion<SimulateAuthorizationExpiryResponse>
-    )
+    func simulateAuthorizationExpiryWithId(_ id: String) async throws -> SimulateAuthorizationExpiryResponse
 
     /// Simulate a refund transaction (`.refund`).
     ///
@@ -104,11 +96,11 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// - Parameters:
     ///   - input: Input used to configure the refund.
     /// - Returns:
-    ///   - Success: Response data from the simulation request.
-    ///   - Failure:
+    ///   - Response data from the simulation request.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func simulateRefundWithInput(_ input: SimulateRefundInput, completion: @escaping ClientCompletion<SimulateRefundResponse>)
+    func simulateRefundWithInput(_ input: SimulateRefundInput) async throws -> SimulateRefundResponse
 
     /// Simulate a debit transaction (`.complete`).
     ///
@@ -123,11 +115,11 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// - Parameters:
     ///   - input: Input used to configure the refund.
     /// - Returns:
-    ///   - Success: Response data from the simulation request.
-    ///   - Failure:
+    ///   - Response data from the simulation request.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func simulateDebitWithInput(_ input: SimulateDebitInput, completion: @escaping ClientCompletion<SimulateDebitResponse>)
+    func simulateDebitWithInput(_ input: SimulateDebitInput) async throws -> SimulateDebitResponse
 
     // MARK: - Queries
 
@@ -136,19 +128,19 @@ public protocol SudoVirtualCardsSimulatorClient: class {
     /// This method returns all the supported merchants available to perform transaction simulations.
     ///
     /// - Returns:
-    ///   - Success: Merchants supported by the simulator.
-    ///   - Failure:
+    ///   - Merchants supported by the simulator.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func getSimulatorMerchants(_ completion: @escaping ClientCompletion<[SimulatorMerchant]>)
+    func getSimulatorMerchants() async throws -> [SimulatorMerchant]
 
     /// Retrieve a list of conversion rates of supported currencies.
     /// This method returns all the supported currency conversion rates used by the simulator.
     ///
     /// - Returns:
-    ///   - Success: Currency conversion rates used by the simulator.
-    ///   - Failure:
+    ///   - Currency conversion rates used by the simulator.
+    ///   - Throws:
     ///     - SudoPlatformError.
     ///     - SudoVirtualCardsSimulatorError.
-    func getSimulatorConversionRates(_ completion: @escaping ClientCompletion<[CurrencyAmount]>)
+    func getSimulatorConversionRates() async throws -> [CurrencyAmount]
 }
