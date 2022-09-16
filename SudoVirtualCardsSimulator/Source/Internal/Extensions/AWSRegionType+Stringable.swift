@@ -32,6 +32,8 @@ extension AWSRegionType {
             return "ap-southeast-1"
         case .APSoutheast2:
             return "ap-southeast-2"
+        case .APSoutheast3:
+            return "ap-southeast-3"
         case .CACentral1:
             return "ca-central-1"
         case .CNNorth1:
@@ -50,6 +52,8 @@ extension AWSRegionType {
             return "eu-west-3"
         case .EUNorth1:
             return "eu-north-1"
+        case .MECentral1:
+            return "me-central-1"
         case .MESouth1:
             return "me-south-1"
         case .SAEast1:

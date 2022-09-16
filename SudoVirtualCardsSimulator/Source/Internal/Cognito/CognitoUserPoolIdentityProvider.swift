@@ -6,7 +6,7 @@
 
 import Foundation
 import SudoLogging
-import AWSMobileClient
+import AWSCore
 import AWSAppSync
 
 /// Provides the authentication for all GraphQL API calls to the Simulator Service.
