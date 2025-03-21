@@ -5,7 +5,7 @@
 //
 
 import Foundation
-import AWSMobileClient
+import AWSMobileClientXCF
 
 /// Facade class for `AWSMobileClient`. Aids in testability.
 protocol UserPoolAuthenticator {
