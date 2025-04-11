@@ -1,7 +1,8 @@
 // swiftlint:disable all
 //  This file was automatically generated and should not be edited.
 
-import AWSAppSync
+import Amplify
+import SudoApiClient
 
 /// Request to simulate an authorization request from a merchant
 internal struct SimulateAuthorizationRequest: GraphQLMapConvertible {

@@ -5,8 +5,6 @@
 //
 
 import Foundation
-import SudoApiClient
-import AWSAppSync
 
 /// Errors receieved from virtual cards simulator.
 public enum SudoVirtualCardsSimulatorError: Error, Equatable {
@@ -71,37 +69,6 @@ public enum SudoVirtualCardsSimulatorError: Error, Equatable {
     /// conditions that is beyond control of `SudoVirtualCardsSimulator` implementation.
     case fatalError(description: String)
 
-    /// Initialize an instance of `SudoVirtualCardsSimulatorError`.
-    /// - Parameter error: GraphQL Error to be converted to a `SudoVirtualCardsSimulatorError`.
-    init(_ error: GraphQLError) {
-        guard let errorType = error["errorType"] as? String else {
-            self = .internalError(error.message)
-            return
-        }
-        switch errorType {
-        case "sudoplatform.virtual-cards.CardNotFoundError":
-            self = .cardNotFound
-        case "sudoplatform.virtual-cards.CardStateError":
-            self = .cardStateError
-        case "sudoplatform.virtual-cards.TransactionNotFoundError":
-            self = .transactionNotFound
-        case "sudoplatform.virtual-cards.CurrencyMismatchError":
-            self = .currencyMismatch
-        case "sudoplatform.virtual-cards.MerchantNotFoundError":
-            self = .merchantNotFound
-        case "sudoplatform.virtual-cards.InvalidTransactionTypeError":
-            self = .InvalidTransactionType
-        case "sudoplatform.virtual-cards.ExcessiveReversalError":
-            self = .excessiveReversal
-        case "sudoplatform.virtual-cards.ExcessiveRefundError":
-            self = .excessiveRefund
-        case "sudoplatform.virtual-cards.AlreadyExpiredError":
-            self = .alreadyExpired
-        default:
-            self = .internalError("\(errorType) - \(error.message)")
-        }
-    }
-
     // MARK: - Conformance: Equatable
 
     public static func == (lhs: SudoVirtualCardsSimulatorError, rhs: SudoVirtualCardsSimulatorError) -> Bool {
@@ -140,34 +107,6 @@ public enum SudoVirtualCardsSimulatorError: Error, Equatable {
             return true
         default:
             return false
-        }
-    }
-}
-
-extension SudoVirtualCardsSimulatorError {
-
-    struct Constants {
-        static let errorType = "errorType"
-    }
-
-    static func fromApiOperationError(error: Error) -> SudoVirtualCardsSimulatorError {
-        switch error {
-        case ApiOperationError.invalidRequest:
-            return .invalidRequest
-        case ApiOperationError.notSignedIn:
-            return .notSignedIn
-        case ApiOperationError.notAuthorized:
-            return .notAuthorized
-        case ApiOperationError.serviceError:
-            return .serviceError
-        case ApiOperationError.rateLimitExceeded:
-            return .rateLimitExceeded
-        case ApiOperationError.graphQLError(let cause):
-            return .graphQLError(description: "Unexpected GraphQL error: \(cause)")
-        case ApiOperationError.requestFailed(let response, let cause):
-            return .requestFailed(response: response, cause: cause)
-        default:
-            return .fatalError(description: "Unexpected API operation error: \(error)")
         }
     }
 }

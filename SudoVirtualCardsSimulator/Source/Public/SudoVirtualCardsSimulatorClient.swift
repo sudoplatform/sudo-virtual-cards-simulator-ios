@@ -15,14 +15,6 @@ import Foundation
 /// only meant to be used for initializing an instance of the client.
 public protocol SudoVirtualCardsSimulatorClient: AnyObject {
 
-    // MARK: - Lifecycle
-
-    /// Resets any cached data, and purges any pending operations.
-    ///
-    /// It is important to note that this will clear ALL cached data related to all
-    /// sudo services.
-    func reset() throws
-
     // MARK: - Mutations: Transactions
 
     /// Simulate an authorization transaction (`.pending`).

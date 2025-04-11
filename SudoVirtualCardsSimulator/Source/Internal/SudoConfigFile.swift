@@ -9,5 +9,5 @@ import Foundation
 /// Decodable representation of the config file.
 struct SudoConfigFile: Decodable {
 
-    var adminConsoleProjectService: SudoVirtualCardsSimulatorConfig
+    var vcSimulator: SudoVirtualCardsSimulatorConfig
 }
