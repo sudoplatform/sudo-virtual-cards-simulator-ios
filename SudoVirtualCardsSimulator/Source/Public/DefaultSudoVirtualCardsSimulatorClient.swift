@@ -10,7 +10,7 @@ import SudoUser
 import SudoLogging
 
 /// Default Client API Endpoint for interacting with the virtual cards service simulator.
-public class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorClient {
+public final class DefaultSudoVirtualCardsSimulatorClient: SudoVirtualCardsSimulatorClient {
     
     // MARK: - Supplementary
     

@@ -7,7 +7,7 @@
 import Foundation
 
 /// Input to simulate a reversal request from a merchant.
-public struct SimulateReversalInput: Equatable {
+public struct SimulateReversalInput: Equatable, Sendable {
 
     // MARK: - Properties
 

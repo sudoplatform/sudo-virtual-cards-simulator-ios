@@ -7,7 +7,7 @@
 import Foundation
 
 /// Errors receieved from virtual cards simulator.
-public enum SudoVirtualCardsSimulatorError: Error, Equatable {
+public enum SudoVirtualCardsSimulatorError: Error, Equatable, @unchecked Sendable {
     /// Not signed in.
     case notSignedIn
     /// Configuration is invalid.

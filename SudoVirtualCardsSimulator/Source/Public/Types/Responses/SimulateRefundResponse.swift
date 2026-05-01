@@ -7,7 +7,7 @@
 import Foundation
 
 /// Simulated refund response.
-public struct SimulateRefundResponse: Equatable {
+public struct SimulateRefundResponse: Equatable, Sendable {
 
     // MARK: - Properties
 

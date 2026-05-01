@@ -7,7 +7,7 @@
 import Foundation
 
 /// Simulated debit response.
-public struct SimulateDebitResponse: Equatable {
+public struct SimulateDebitResponse: Equatable, Sendable {
 
     // MARK: - Properties
 

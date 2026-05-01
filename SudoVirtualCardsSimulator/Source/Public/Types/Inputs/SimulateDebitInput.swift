@@ -8,7 +8,7 @@ import Foundation
 
 /// Simulate a settlement of an authorized amount. Other attributes of the debit such as merchant info are derived from the original authorization identified by
 /// the authorizationId.
-public struct SimulateDebitInput: Equatable {
+public struct SimulateDebitInput: Equatable, Sendable {
 
     // MARK: - Properties
 

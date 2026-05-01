@@ -12,7 +12,7 @@ import SudoApiClient
 
 /// A default implementation of `GraphQLClient` that interacts with AWS GraphQL backend.
 /// This class handles authentication, request construction, and execution of GraphQL queries and mutations.
-class DefaultGraphQLClient: GraphQLClient {
+class DefaultGraphQLClient: GraphQLClient, @unchecked Sendable {
 
     // MARK: - Properties
 

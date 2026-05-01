@@ -7,7 +7,7 @@
 import Foundation
 
 /// Input to simulate an authorization request from a merchant.
-public struct SimulateAuthorizationInput: Equatable {
+public struct SimulateAuthorizationInput: Equatable, Sendable {
 
     // MARK: - Properties
 

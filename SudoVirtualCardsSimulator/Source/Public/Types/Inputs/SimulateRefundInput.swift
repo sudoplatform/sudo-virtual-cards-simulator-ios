@@ -7,7 +7,7 @@
 import Foundation
 
 /// Input to simulate a refund request from a merchant.
-public struct SimulateRefundInput: Equatable {
+public struct SimulateRefundInput: Equatable, Sendable {
 
     // MARK: - Properties
 

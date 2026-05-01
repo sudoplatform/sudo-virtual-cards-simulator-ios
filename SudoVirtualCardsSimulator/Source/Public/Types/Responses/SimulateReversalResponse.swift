@@ -7,7 +7,7 @@
 import Foundation
 
 /// Simulated reversal response.
-public struct SimulateReversalResponse: Equatable {
+public struct SimulateReversalResponse: Equatable, Sendable {
 
     // MARK: - Properties
 

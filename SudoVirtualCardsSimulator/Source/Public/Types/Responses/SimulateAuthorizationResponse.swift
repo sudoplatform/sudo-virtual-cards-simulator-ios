@@ -7,7 +7,7 @@
 import Foundation
 
 /// Simulated authorization response.
-public struct SimulateAuthorizationResponse: Equatable {
+public struct SimulateAuthorizationResponse: Equatable, Sendable {
 
     // MARK: - Properties
 

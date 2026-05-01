@@ -8,7 +8,7 @@ import Foundation
 import SudoApiClient
 
 /// A protocol defining a client for executing GraphQL operations, including queries, mutations, and subscriptions.
-protocol GraphQLClient {
+protocol GraphQLClient: Sendable {
 
     /// Executes a GraphQL query and returns the result.
     /// - Parameter query: The `GraphQLQuery` to execute.

@@ -7,7 +7,7 @@
 import Foundation
 
 /// Request to simulate an incremental authorization request from a merchant.
-public struct SimulateIncrementalAuthorizationInput: Equatable {
+public struct SimulateIncrementalAuthorizationInput: Equatable, Sendable {
 
     // MARK: - Properties
 

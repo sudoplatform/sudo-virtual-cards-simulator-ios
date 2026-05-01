@@ -7,7 +7,7 @@
 import Foundation
 
 /// Representation of an BillingAddress data structure for depicting a card/funding source billing address.
-public struct BillingAddress: Equatable {
+public struct BillingAddress: Equatable, Sendable {
 
     // MARK: - Properties
 

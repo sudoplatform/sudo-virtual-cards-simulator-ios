@@ -7,7 +7,7 @@
 import Foundation
 
 /// Representation of a Currency Amount object.
-public struct CurrencyAmount: Hashable {
+public struct CurrencyAmount: Hashable, Sendable {
 
     // MARK: - Properties
 

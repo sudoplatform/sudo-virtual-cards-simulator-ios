@@ -7,7 +7,7 @@
 import Foundation
 
 /// Representation of an Expiry data structure for depicting a card expiration date.
-public struct Expiry: Equatable {
+public struct Expiry: Equatable, Sendable {
 
     // MARK: - Properties
 

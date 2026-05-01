@@ -7,7 +7,7 @@
 import Foundation
 
 /// Representation of a simulated merchant
-public struct SimulatorMerchant: Equatable {
+public struct SimulatorMerchant: Equatable, Sendable {
 
     // MARK: - Properties
 

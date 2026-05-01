@@ -13,7 +13,7 @@ import Foundation
 ///
 /// It is recommended to code to this interface, rather than the implementation class (`DefaultSudoVirtualCardsSimulatorClient`) as the implementation class is
 /// only meant to be used for initializing an instance of the client.
-public protocol SudoVirtualCardsSimulatorClient: AnyObject {
+public protocol SudoVirtualCardsSimulatorClient: AnyObject, Sendable {
 
     // MARK: - Mutations: Transactions
 

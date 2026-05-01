@@ -7,7 +7,7 @@
 import Foundation
 
 /// Decodable representation of the config file.
-struct SudoConfigFile: Decodable {
+struct SudoConfigFile: Decodable, Sendable {
 
     var vcSimulator: SudoVirtualCardsSimulatorConfig
 }
